@@ -80,16 +80,6 @@
 
                             <div class="row">
                                 <div class="form-group col-md-12">
-                                    <label>نوع الحساب</label>
-                                    <select name="type"  class="form-control" id="">
-                                        <option value="user">طالب</option>
-                                        <option value="service">خدمات</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="form-group col-md-12">
                                     <label>عبر عن نفسك ببضع كلمات</label>
                                     <textarea name="about" class="form-control">{{ old('about') }}</textarea>
                                 </div>

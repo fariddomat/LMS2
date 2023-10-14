@@ -57,7 +57,6 @@ class ProfileController extends Controller
             'password'=> 'required|confirmed',
             'birth_date'=> 'required',
             'address'=> 'required',
-            'type'=> 'required',
             'about'=> 'required',
             'why'=> 'required',
         ]);
@@ -71,9 +70,9 @@ class ProfileController extends Controller
             'password' => $profile->password,
         ]);
 
-        $role=Role::where('name', $request->type)->firstOrFail();
+        $role=Role::where('name', 'user')->firstOrFail();
         $user->attachRoles([$role->id]);
-        session()->flash('success','تم رفع الطلب إلى إدارة الأكاديمية للمراجعة، دمتم بخير !');
+        session()->flash('success','تم إنشاء الحساب بنجاح، قم بتسجيل الدخول الاّن !');
 
         try {
             $info = array(
@@ -138,7 +137,6 @@ class ProfileController extends Controller
             'email'=> 'required|email|unique:profiles,email,'. $id,
             'birth_date'=> 'required',
             'address'=> 'required',
-            'type'=> 'required',
             'about'=> 'required',
             'why'=> 'required',
         ]);
@@ -151,8 +149,6 @@ class ProfileController extends Controller
             'email' => $profile->email,
         ]);
 
-        $role=Role::where('name', $request->type)->firstOrFail();
-        $user->syncRoles([$role->id]);
         session()->flash('success','تم التعديل بنجاح !');
         return redirect()->route('profiles.index');
     }

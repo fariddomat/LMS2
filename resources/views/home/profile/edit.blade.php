@@ -66,17 +66,6 @@
                                     <textarea name="address" class="form-control">{{ old('address', $profile->address) }}</textarea>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="form-group col-md-12">
-                                    <label>نوع الحساب</label>
-                                    <select name="type" class="form-control" id="">
-                                        <option value="user" @if ($profile->type == 'user') selected @endif>طالب
-                                        </option>
-                                        <option value="service" @if ($profile->type == 'service') selected @endif>خدمات
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
 
                             <div class="row">
                                 <div class="form-group col-md-12">

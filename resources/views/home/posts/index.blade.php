@@ -27,49 +27,7 @@
                     <div class="isotope-layout masonry grid-4 gutter-15 clearfix">
                         <div class="isotope-layout-inner">
                             <div class="isotope-item isotope-item-sizer"></div>
-                            {{-- integrateive --}}
-                            <div class="isotope-item">
-                                <div class="isotope-item-inner">
-                                    <div class="tm-sc-blog blog-style-default mb-30">
-                                        <article class="post type-post status-publish format-standard has-post-thumbnail">
-                                            <div class="entry-header">
-                                                <div class="post-thumb lightgallery-lightbox">
-                                                    <div class="post-thumb-inner">
-                                                        <div class="thumb">
-                                                            <span class="badge"
-                                                                style="position: absolute;
-                                                            top: 0;
-                                                            right: 0;
-                                                            z-index: 100;"><i
-                                                                    class="fas fa-thumbtack"
-                                                                    style="font-size: 25px;
-                                                                    padding-top: 15px;
-                                                                    padding-right: 15px;"></i></span>
-                                                            <img src="{{ asset('int.webp') }}" alt="Image" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <a class="link" href="{{ route('integrativeMedicine') }}"><i
-                                                        class="fa fa-link"></i></a>
-                                            </div>
-                                            <div class="entry-content">
-                                                <h4 class="entry-title"><a href="{{ route('integrativeMedicine') }}"
-                                                        rel="bookmark">الطب الشمولي</a></h4>
 
-
-                                                <div class="post-excerpt">
-                                                    <div class="mascot-post-excerpt">
-                                                        ماهو الطب الشمولي؟
-                                                    </div>
-                                                </div>
-                                                <div class="post-btn-readmore"> <a href="{{ route('integrativeMedicine') }}"
-                                                        class="btn btn-plain-text-with-arrow"> عرض التفاصيل </a></div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </article>
-                                    </div>
-                                </div>
-                            </div>
                             @foreach ($posts as $post)
                                 <!-- Isotope Item Start -->
                                 <div class="isotope-item">

@@ -52,44 +52,7 @@
                         <div class="col-md-8">
 
                             <h4 class="line-bottom">الملف الشخصي:</h4>
-                            @if (Auth::user()->hasRole('user'))
-                                @if ($profile->status == 'pending')
-                                    <div class="bg-success text-white d-flex border-bottom p-15 mb-20">
-                                        <div class="flex-shrink-0">
-                                            <i class="pe-7s-lock text-theme-colored font-size-24 mt-1 me-3"></i>
-                                        </div>
-                                        <div class="flex-shrink-1">
-                                            <p>أكمل إعداد ملفك الشخصي للوصول إلى الأكاديمية بتسديد رسوم الحساب والتي قدرها
-                                                350 ريال</p>
-                                            <form action="{{ route('tap.payment') }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="btn btn-light">تسديد الآن</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                @elseif ($profile->status == 'paid')
-                                    <div class="bg-success text-white d-flex border-bottom p-15 mb-20 pt-30">
-                                        <div class="flex-shrink-0">
-                                            <i class="pe-7s-book text-theme-colored font-size-24 mt-1 me-3"></i>
-                                        </div>
-                                        <div class="flex-shrink-1">
-                                            <p>سنقوم بدراسة طلبك الآن، شكرا لتأكيد التسجيل</p>
-
-                                        </div>
-                                    </div>
-
-                                    @elseif ($profile->status == 'active' && Auth::user()->enrollments->count() == 0 )
-                                    <div class="bg-success text-white d-flex border-bottom p-15 mb-20 pt-30">
-                                        <div class="flex-shrink-0">
-                                            <i class="pe-7s-book text-theme-colored font-size-24 mt-1 me-3"></i>
-                                        </div>
-                                        <div class="flex-shrink-1">
-                                            <p> تم تفعيل الحساب، قم بالانتقال لقسم الدورات للاشتراك بالدورة.</p>
-
-                                        </div>
-                                    </div>
-                                @endif
-                            @endif
+                            
                             <h3 class="mt-0">الاسم بالكامل: {{ $profile->full_name }}</h3>
                             <div class="bg-light d-flex border-bottom p-15 mb-20">
                                 <div class="flex-shrink-0">

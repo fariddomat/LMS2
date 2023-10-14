@@ -21,10 +21,10 @@ class CreateProfilesTable extends Migration
             $table->string('password');
             $table->date('birth_date');
             $table->text('address');
-            $table->string('type'); // student - worker - doctor
+            // $table->string('type'); // student - worker - doctor
             $table->longText('about');
             $table->longText('why');
-            $table->string('status')->default('pending');
+            $table->string('status')->default('active');
             // $table->rememberToken();
 
             $table->timestamps();
