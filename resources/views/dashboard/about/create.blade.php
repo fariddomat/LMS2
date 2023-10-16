@@ -40,7 +40,7 @@
                                     <textarea class="form-control" id="about_me" name="about_me" rows="5" dir="rtl">{{ old('ar.about_me') ?? isset($about) ? $about->about_me : '' }}</textarea>
                                 </div>
 
-                                <div class="form-group mb-3">
+                                {{-- <div class="form-group mb-3">
                                     <label for="brief" class="form-label">نبذة عن الشركة</label>
                                     <textarea class="form-control" id="brief" name="brief" rows="5" dir="rtl">{{ old('ar.brief') ?? isset($about) ? $about->brief : '' }}</textarea>
                                 </div>
@@ -48,13 +48,13 @@
                                 <div class="form-group mb-3">
                                     <label for="who" class="form-label">من نحن؟</label>
                                     <textarea class="form-control" id="who" name="who" rows="5" dir="rtl">{{ old('ar.who') ?? isset($about) ? $about->who_are_we : '' }}</textarea>
-                                </div>
+                                </div> --}}
 
-                                <hr>
+                                {{-- <hr>
                                 <div class="form-group mb-3">
                                     <label for="history" class="form-label">تاريخنا</label>
                                     <textarea class="form-control" id="history" name="history" rows="5" dir="rtl">{{ old('ar.history') ?? isset($about) ? $about->history : '' }}</textarea>
-                                </div>
+                                </div> --}}
 
                                 <hr>
                                 <div class="form-group mb-3">
@@ -62,11 +62,11 @@
                                     <textarea class="form-control" id="massage" name="massage" rows="5" dir="rtl">{{ old('ar.massage') ?? isset($about) ? $about->massage : '' }}</textarea>
                                 </div>
 
-                                <hr>
+                                {{-- <hr>
                                 <div class="form-group mb-3">
                                     <label for="goals" class="form-label">أهدافنا</label>
                                     <textarea class="form-control" id="goals" name="goals" rows="5" dir="rtl">{{ old('ar.goals') ?? isset($about) ? $about->goals : '' }}</textarea>
-                                </div>
+                                </div> --}}
 
                                 <hr>
                                 <div class="form-group mb-3">

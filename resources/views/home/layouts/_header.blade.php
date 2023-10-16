@@ -18,9 +18,9 @@ position: relative;">
                                     <li class="{{ Request::is('whoiam') ? 'active' : '' }} menu-item">
                                         <a href="{{ route('whoiam') }}">من أنا</a>
                                     </li>
-                                    <li class="{{ Request::is('service*') ? 'active' : '' }} menu-item">
+                                    {{-- <li class="{{ Request::is('service*') ? 'active' : '' }} menu-item">
                                         <a href="{{ route('services.index') }}">خدماتنا</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="{{ Request::is('courses*') ? 'active' : '' }} menu-item">
                                         <a href="{{ route('courses.index') }}">الدورات</a>
                                     </li>

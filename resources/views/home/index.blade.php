@@ -73,7 +73,51 @@
             </div>
         </section>
 
+        <section class="z-index-1">
+            <div class="container">
+                <div class="section-content">
+                    {{-- 3 --}}
+                    <div class="row" style="margin-bottom: 75px ;">
+                        <div class="col-lg-6">
+                            <div class="col-md-12 academy3 m-3"
+                                style="background: #A8CDD1;min-height: 450px !important;padding-top: 50px;">
 
+                                <h2
+                                    style="height: 75px;
+                                padding-top: 25px;">
+                                    رسالتنا</h2>
+                                <h3 style="text-align: justify;padding: 0 45px;">
+                                    {!! $about->massage !!}</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                            <div class="col-md-12 academy3 m-3"
+                                style="background: #74b0ec;min-height: 450px !important;padding-top: 50px;">
+                                <h2
+                                    style="height: 75px;
+                                padding-top: 25px;">
+                                    رؤيتنا</h2>
+                                <h3 style="text-align: justify;padding: 0 45px;">
+                                    {!! $about->vision !!}</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 ">
+                            <div class="col-md-12 academy3 m-3"
+                                style="background: #ffcbbd;min-height: 450px !important;padding-top: 50px;">
+                                <h2
+                                    style="height: 75px;
+                                padding-top: 25px;">
+                                    قيمنا</h2>
+                                <h3 style="text-align: justify;padding: 0 45px;">
+                                    {!! $about->ambition !!}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
         {{-- <section class="divider parallax layer-overlay overlay-white-4" style="background-color: white">
             <h2 class="lead"
                 style="margin: 0 auto;

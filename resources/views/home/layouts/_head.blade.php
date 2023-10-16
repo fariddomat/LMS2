@@ -443,6 +443,7 @@
         /*
         FEF6EC
         EAA2A1
+        #ffcbbd
          */
         .TRUST {
             columns: #EFBB76 !important;
