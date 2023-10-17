@@ -111,6 +111,11 @@
                      <a class="nav-link" href="{{ route('dashboard.about.create') }}"><i class="icon-info "></i>
                          من نحن</a>
                  </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href=""><i
+                             class="fa fa-medkit  "></i>
+                         حصص أونلاين</a>
+                 </li>
                  {{-- <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.integrativeMedicines.index') }}"><i
                              class="fa fa-medkit  "></i>
