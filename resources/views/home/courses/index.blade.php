@@ -72,9 +72,9 @@
                                             @endauth
                                         </div>
                                         <div class="content text-left flip p-25 pt-0">
-                                            <h4 class="line-bottom line-bottom-theme-colored1 mb-30 pb-0">
+                                            <h4 class="line-bottom line-bottom-theme-colored1 mb-30 pb-0" style="  min-height: 55px;">
                                                 {{ $course->title }}</h4>
-                                            <p>{{ $course->description }}</p>
+                                            <p style="min-height: 130px">{{ $course->description }}</p>
                                             <a class="btn btn-dark btn-theme-colored2 btn-xs text-uppercase mt-10"
                                                 href="{{ route('courses.show', $course->title) }}">التفاصيل</a>
                                         </div>

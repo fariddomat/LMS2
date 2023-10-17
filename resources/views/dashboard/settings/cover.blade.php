@@ -61,14 +61,14 @@
                                 <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
                                     style=" margin-top: 10px; max-width: 250px;" alt="">
                             </div>
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 <label for="">فيديو الصفحة الرئيسية</label>
                                 <textarea name="home_video" class="form-control" >{{ setting('home_video') }}</textarea>
                             </div>
                             <div class="col-md-12">
                                 <label for="">فيديو صفحة من نحن</label>
                                 <textarea name="who_video" class="form-control" >{{ setting('who_video') }}</textarea>
-                            </div>
+                            </div> --}}
 
                         </div>
                         <br>

@@ -1,5 +1,24 @@
 @extends('home.layouts._app')
+@section('styles')
+<style>
 
+    @media only screen and (max-width: 500px) {
+
+.pr-100 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .row, .col-lg-6 {
+    padding-left: 0px !important;
+    padding-right: 10px !important;
+  }
+
+  h3{
+    padding: 0 10px !important;
+  }
+    }
+</style>
+@endsection
 @section('content')
     <!-- Start main-content -->
     <div class="main-content-area">
@@ -12,18 +31,19 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <div class="pb-50 pt-30">
-                    <h2 style="font-family: Cairo, Sans-serif;
+                                    <h2
+                                        style="font-family: Cairo, Sans-serif;
                     font-size: 45px;
                     font-weight: bold;">
-                        Mellow Minds
-                    </h2>
+                                        Mellow Minds
+                                    </h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="container pr-100 " style="padding-left: 0 !important">
+                    <div class="container pr-100 ">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <div class="pb-50 ">
@@ -78,39 +98,57 @@
                 <div class="section-content">
                     {{-- 3 --}}
                     <div class="row" style="margin-bottom: 75px ;">
-                        <div class="col-lg-6">
-                            <div class="col-md-12 academy3 m-3"
-                                style="background: #A8CDD1;min-height: 450px !important;padding-top: 50px;">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-md-12 academy3 m-3" style="background: #A8CDD1;padding-top: 50px;">
 
-                                <h2
-                                    style="height: 75px;
+                                    <h2 style="height: 75px;
                                 padding-top: 25px;">
-                                    رسالتنا</h2>
-                                <h3 style="text-align: justify;padding: 0 45px;">
-                                    {!! $about->massage !!}</h3>
+                                        رسالتنا</h2>
+                                    <h3 style="text-align: justify;padding: 0 45px;">
+                                        {!! $about->massage !!}</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-6" style="display: flex;
+                            align-items: center;">
+                                <img src="{{ asset('home/images/message.jpg') }}" alt="">
                             </div>
                         </div>
-                        <div class="col-lg-6 ">
-                            <div class="col-md-12 academy3 m-3"
-                                style="background: #74b0ec;min-height: 450px !important;padding-top: 50px;">
-                                <h2
-                                    style="height: 75px;
-                                padding-top: 25px;">
-                                    رؤيتنا</h2>
-                                <h3 style="text-align: justify;padding: 0 45px;">
-                                    {!! $about->vision !!}</h3>
+                        <div class="row">
+
+                            <div class="col-lg-6"
+                                style="display: flex;
+                                 align-items: center;">
+                                <img src="{{ asset('home/images/vision.jpg') }}" alt="">
+                            </div>
+                            <div class="col-lg-6 ">
+                                <div class="col-md-12 academy3 m-3" style="background: #74b0ec;padding-top: 50px;">
+                                    <h2
+                                        style="height: 75px;
+                                            padding-top: 25px;">
+                                        رؤيتنا</h2>
+                                    <h3 style="text-align: justify;padding: 0 45px;">
+                                        {!! $about->vision !!}</h3>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-12 ">
-                            <div class="col-md-12 academy3 m-3"
-                                style="background: #ffcbbd;min-height: 450px !important;padding-top: 50px;">
-                                <h2
-                                    style="height: 75px;
-                                padding-top: 25px;">
-                                    قيمنا</h2>
-                                <h3 style="text-align: justify;padding: 0 45px;">
-                                    {!! $about->ambition !!}
-                                </h3>
+                        <div class="row">
+
+                            <div class="col-lg-6 ">
+                                <div class="col-md-12 academy3 m-3"
+                                    style="background: #ffcbbd;min-height: 450px !important;padding-top: 50px;">
+                                    <h2 style="height: 75px;
+                                    padding-top: 25px;">
+                                        قيمنا</h2>
+                                    <h3 style="text-align: justify;padding: 0 45px;">
+                                        {!! $about->ambition !!}
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6" style="display: flex;
+                        align-items: center;">
+                                <img src="{{ asset('home/images/values.jpg') }}" alt="" style="border-radius: 35%">
                             </div>
                         </div>
                     </div>

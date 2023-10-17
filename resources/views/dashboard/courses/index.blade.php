@@ -1,5 +1,6 @@
 @extends('layouts.dashboard')
 
+
 @section('content')
     <main class="main">
 
@@ -21,7 +22,7 @@
                         <div class="card-header">
                           <h3 class="card-title">قائمة الدورات</h3>
                           <div class="card-tools">
-                            {{-- <a href="{{ route('dashboard.courses.create') }}" class="btn btn-success btn-sm">إضافة دورة</a> --}}
+                            <a href="{{ route('dashboard.courses.create') }}" class="btn btn-success btn-sm">إضافة دورة</a>
                             <a href="{{ route('dashboard.course_categories.index') }}" class="btn btn-success btn-sm">التصنيفات</a>
                           </div>
                         </div>

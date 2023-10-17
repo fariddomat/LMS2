@@ -72,12 +72,12 @@
                                 </div>
                                 {{-- Site Phone --}}
                                 <div class="form-group">
-                                    <label for="site_phone" class="text-capitalize"> هاتف الخدمات</label>
+                                    <label for="site_phone" class="text-capitalize"> هاتف 1</label>
                                     <input type="text" class="form-control" name="site_phone" id="site_phone"
                                         value="{{setting('site_phone')}}" aria-describedby="helpId" placeholder="">
                                 </div>
                                 <div class="form-group">
-                                    <label for="site_phone" class="text-capitalize">هاتف الاكاديمية</label>
+                                    <label for="site_phone" class="text-capitalize">هاتف 2</label>
                                     <input type="text" class="form-control" name="site_phone2" id="site_phone"
                                         value="{{setting('site_phone2')}}" aria-describedby="helpId" placeholder="">
                                 </div>

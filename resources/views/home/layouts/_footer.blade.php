@@ -6,13 +6,13 @@
                 <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="tm-widget-contact-info contact-info-style1 contact-icon-theme-colored1">
                         <div class="thumb" style="margin-top: -15px;">
-                            <img alt="Logo" src="{{ asset('logo.png') }}">
+                            <img alt="Logo" src="{{ asset('logo.png') }}" style="width: 100px">
                         </div>
                     </div>
                     <div class="tm-sc-unordered-list list-style2">
                         <ul>
-                            <li><strong>رقم الواتس اب لحجز الجلسات:</strong> <a href= "https://wa.me/{{setting('site_phone')}}">{{setting('site_phone')}}</a></li>
-                            <li><strong>رقم الهاتف للاستفسار عن الاكاديمية:</strong> <a href="tel:{{setting('site_phone2')}}">{{setting('site_phone2')}}</a></li>
+                            <li><strong>رقم الهاتف :</strong> <a href= "tel:{{setting('site_phone')}}">{{setting('site_phone')}}</a></li>
+                            <li><strong>رقم الهاتف2:</strong> <a href="tel:{{setting('site_phone2')}}">{{setting('site_phone2')}}</a></li>
                             <li><strong>البريد الالكتروني:</strong> <a
                                     href="mailto:{{setting('site_email')}}">{{setting('site_email')}}</a></li>
                         </ul>
@@ -23,11 +23,9 @@
                         <h4 class="widget-title widget-title-line-bottom line-bottom-theme-colored1">وسائل الدفع المتاحة</h4>
                         <ul>
                             <li>
-                                <img src="{{ asset('paymentslogo/mada.png') }}" style="max-width: 70px" alt="">
-                                <img src="{{ asset('paymentslogo/stcpay.svg') }}" style="max-width: 70px" alt="">
                                 <img src="{{ asset('paymentslogo/pngwing.com.png') }}" style="max-width: 140px" alt="">
                             </li>
-                            <li>
+                            {{-- <li>
                                 <img src="{{ asset('paymentslogo/tabby_logo.webp') }}" style="max-width: 100px;margin-top: -15px;" alt="">
                             </li>
                             <li>
@@ -37,7 +35,7 @@
                                <a href="https://eauthenticate.saudibusiness.gov.sa/inquiry?certificateRefID=0000024848">
                                 <img src="{{ asset('paymentslogo/saudiWork.png') }}" style="max-width: 190px;margin-top: -7px" alt="">
                                </a>
-                            </li>
+                            </li> --}}
 
 
 
@@ -58,10 +56,10 @@
                             </ul>
                         </div>
                         <ul class="styled-icons icon-dark icon-sm icon-circled mt-30">
-                            <li><a class="social-link" data-tm-bg-color="#ffa0a2" href="{{ setting('site_email') }}"><i class="fa fa-envelope"></i></a></li>
-                            <li><a class="social-link" data-tm-bg-color="#ffa0a2" href="{{ setting('instagram2_link') }}"><i class="fab fa-instagram"></i></a></li>
-                            <li><a class="social-link" data-tm-bg-color="#ffa0a2" href="{{ setting('twitter_link') }}"><i class="fab fa-twitter"></i></a></li>
-                            <li><a class="social-link" data-tm-bg-color="#ffa0a2" href="{{ setting('whatsapp_link') }}"><i class="fab fa-whatsapp"></i></a></li>
+                            <li><a class="social-link" data-tm-bg-color="#A8CDD1" href="{{ setting('site_email') }}"><i class="fa fa-envelope"></i></a></li>
+                            <li><a class="social-link" data-tm-bg-color="#A8CDD1" href="{{ setting('instagram2_link') }}"><i class="fab fa-instagram"></i></a></li>
+                            <li><a class="social-link" data-tm-bg-color="#A8CDD1" href="{{ setting('twitter_link') }}"><i class="fab fa-twitter"></i></a></li>
+                            <li><a class="social-link" data-tm-bg-color="#A8CDD1" href="{{ setting('whatsapp_link') }}"><i class="fab fa-whatsapp"></i></a></li>
 
                           </ul>
 
