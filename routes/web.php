@@ -156,6 +156,9 @@ Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\Lesso
     Route::get('/settings/changePassword', 'App\Http\Controllers\Dashboard\SettingController@changePassword')->name('setting.changePassword');
     Route::post('/settings/changePass', 'App\Http\Controllers\Dashboard\SettingController@changePass')->name('setting.changePass');
 
+
+    Route::resource('materials','App\Http\Controllers\Dashboard\MaterialController');
+
  });
 
 
