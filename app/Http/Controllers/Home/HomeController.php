@@ -12,6 +12,7 @@ use App\Models\Enrollment;
 use App\Models\Faq;
 use App\Models\IntegrativeMedicine;
 use App\Models\Lesson;
+use App\Models\Material;
 use App\Models\Service;
 use App\Models\Trainer;
 use App\Models\WhoIAm;
@@ -24,7 +25,8 @@ class HomeController extends Controller
     {
         $posts = Post::where('published', true)->latest()->limit(3)->get();
         $about = About::firstOrFail();
-        return view('home.index', compact('posts', 'about'));
+        $materials=Material::all();
+        return view('home.index', compact('posts', 'about', 'materials'));
     }
 
     public function contact(Request $request)

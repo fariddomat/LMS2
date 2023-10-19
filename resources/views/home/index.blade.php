@@ -1,23 +1,24 @@
 @extends('home.layouts._app')
 @section('styles')
-<style>
+    <style>
+        @media only screen and (max-width: 500px) {
 
-    @media only screen and (max-width: 500px) {
+            .pr-100 {
+                padding-left: 10px !important;
+                padding-right: 10px !important;
+            }
 
-.pr-100 {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-  .row, .col-lg-6 {
-    padding-left: 0px !important;
-    padding-right: 10px !important;
-  }
+            .row,
+            .col-lg-6 {
+                padding-left: 0px !important;
+                padding-right: 10px !important;
+            }
 
-  h3{
-    padding: 0 10px !important;
-  }
-    }
-</style>
+            h3 {
+                padding: 0 10px !important;
+            }
+        }
+    </style>
 @endsection
 @section('content')
     <!-- Start main-content -->
@@ -156,70 +157,76 @@
 
             </div>
         </section>
-        {{-- <section class="divider parallax layer-overlay overlay-white-4" style="background-color: white">
-            <h2 class="lead"
-                style="margin: 0 auto;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            z-index: 5000;
-            color: #dea3a7;
-            font-weight: 600;
-            font-size: 2.7rem; margin-top: 50px ">
-                تعريف رحلة التشافي</h2>
-            <img src="{{ asset('t.jpg') }}" alt="">
-        </section> --}}
-
         <!-- Section: Services -->
-        {{-- <section id="services" class="divider parallax layer-overlay overlay-white-8" data-parallax-ratio="0.1"
-            data-tm-bg-img="{{ asset('home/images/bg/service.png') }}">
+        <section id="services" class="divider parallax layer-overlay overlay-white-8" data-parallax-ratio="0.1"
+            data-tm-bg-img="{{ asset('home/images/courses.webp') }}">
             <div class="container pt-150 pb-150">
                 <div class="section-title text-center">
                     <div class="row">
                         <div class="col-md-12">
                             <h2 class="text-uppercase title"> <span class="text-theme-colored font-weight-300">
-                                    خدماتنا</span></h2>
+                                    الدورات التدريبية</span></h2>
                         </div>
                     </div>
                 </div>
-                <div class="section-content">
+                <div class="section-content pt-50">
                     <div class="row multi-row-clearfix" style="justify-content: center">
-                        @foreach ($services_count as $service)
-                            <div class="col-md-6 col-lg-6 col-xl-4">
-                                <div class="tm-sc-services services-style-current-theme5">
-                                    <div class="tm-service">
-                                        <div class="thumb">
-                                            <img src="{{ $service->image_path }}" alt="image">
-                                            <a href="{{ route('services.show', $service->title) }}"
-                                                class="icon bg-theme-colored1"><i class="fa fa-plus-square"></i></a>
-                                        </div>
-                                        <div class="content">
-                                            <h4 class="mt-0 mb-15">{{ $service->title }}</h4>
-                                            <p>{{ $service->main_title }}</p>
-                                            <p>
-                                                @if ($service->price > 0)
-                                                سعر الخدمة: {{ $service->price }} ريال
-                                                @else
-                                                <br>
-                                                @endif
-                                            </p>
-                                            <a href="{{ route('services.show', $service->title) }}" target="_self"
-                                                class="btn btn-dark btn-theme-colored1 btn-sm btn-block mt-15 mb-20"> قراءة
-                                                المزيد </a>
-
-                                                <form action="{{ route('orderservices.create') }}" method="get">
-                                                    <input type="hidden" name="service_id" value="{{ $service->id }}">
-                                                        <button type="submit" class="btn btn-dark btn-theme-colored3 text-uppercase"> أطلب الخدمة الآن</button>
-                                                    </form>
-                                        </div>
+                        @foreach ($courses_count as $course)
+                            <div class="col-sm-6 col-md-4">
+                                <div class="course-item mb-30 bg-white border-1px">
+                                    <div class="course-thumb"> <img alt="featured project"
+                                            src="{{ $course->thumbnail_url }}" class="w-100">
+                                        @auth
+                                            @if (Auth::user()->enrollments->count() == 0)
+                                                <h4 class="price mt-0 mb-0">{{ $course->price }}</h4>
+                                            @endif
+                                        @else
+                                            <h4 class="price mt-0 mb-0">{{ $course->price }}</h4>
+                                        @endauth
                                     </div>
+                                    <div class="content text-left flip p-25 pt-0">
+                                        <h4 class="line-bottom line-bottom-theme-colored1 mb-30 pb-0"
+                                            style="  min-height: 55px;">
+                                            {{ $course->title }}</h4>
+                                        <p style="min-height: 130px">{{ $course->description }}</p>
+                                        <a class="btn btn-dark btn-theme-colored2 btn-xs text-uppercase mt-10"
+                                            href="{{ route('courses.show', $course->title) }}">التفاصيل</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <div class="col-md-4" style="text-align: center">
+                            <a href="{{ route('courses.index') }}"
+                                class="btn btn-dark btn-theme-colored2 btn-lg btn-block mt-15 mb-20">شاهد كل الدورات</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-title text-center pt-100">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-uppercase title"> <span class="text-theme-colored font-weight-300">
+                                يمكنك الاستفادة أيضاً من المواد التعليمية المجانية</span></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-content pt-50">
+                    <div class="row multi-row-clearfix" style="justify-content: center">
+                        @foreach ($materials as $material)
+                            <div class="col-sm-6 col-md-3">
+                                <div class="course-item mb-30 bg-white border-1px">
+                                    <div class="course-thumb"> <a href="{{ asset('materials/'.$material->file) }}" download=""><img alt="featured project"
+                                        src="{{ asset('materials/'.$material->img) }}" class="w-100"></a>
+                                    </div>
+
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
             </div>
-        </section> --}}
+        </section>
 
         <!-- Section: blog -->
         {{-- <section id="blog" class="divider parallax layer-overlay overlay-white-4" style="background-color: #f2fffd;">
