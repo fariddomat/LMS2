@@ -86,6 +86,11 @@ Route::get('/clear', function() {
     Route::resource('course_categories','App\Http\Controllers\Dashboard\CourseCategoryController');
     Route::post('course_categories/sortable', 'App\Http\Controllers\Dashboard\CourseCategoryController@sort');
 
+    Route::get('online_classes/index', 'App\Http\Controllers\Dashboard\OnlineClasseController@index')->name('online_classes.index');
+    Route::get('online_classes/create', 'App\Http\Controllers\Dashboard\OnlineClasseController@createView')->name('online_classes.create');
+    Route::post('online_classes/store', 'App\Http\Controllers\Dashboard\OnlineClasseController@store')->name('online_classes.store');
+    Route::get('online_classes/{id}/edit', 'App\Http\Controllers\Dashboard\OnlineClasseController@edit')->name('online_classes.edit');
+
 
 
     Route::get('lessons/{lesson}/lesson_files/create','App\Http\Controllers\Dashboard\LessonFileController@create')->name('lesson.files.create');

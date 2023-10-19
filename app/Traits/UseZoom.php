@@ -56,14 +56,25 @@ trait UseZoom
 
         $base64Credentials = base64_encode("$apiKey:$apiSecret");
 
-        $url = 'https://zoom.us/oauth/token?grant_type=account_credentials&account_id=' . $account_id;
+        // $url = 'https://zoom.us/oauth/token?grant_type=account_credentials&account_id=' . $account_id;
 
-        $response = Http::withHeaders([
-            'Authorization' => "Basic $base64Credentials",
-            'Content-Type' => 'application/x-www-form-urlencoded',
-        ])->post($url);
+        // $response = Http::withHeaders([
+        //     'Authorization' => "Basic $base64Credentials",
+        //     'Content-Type' => 'application/x-www-form-urlencoded',
+        // ])->post($url);
 
-        $responseData = $response->json();
+        // $responseData = $response->json();
+
+        $client = new Client();
+
+        $response = $client->post('https://zoom.us/oauth/token', [
+            'form_params' => [
+                'grant_type' => 'account_credentials',
+                'client_id' => $apiKey,
+                'client_secret' => $apiSecret,
+            ],
+        ]);
+        $responseData = json_decode($response->getBody(), true);
 
         if (isset($responseData['access_token'])) {
             return $responseData['access_token'];
@@ -119,11 +130,11 @@ trait UseZoom
         $url = 'https://api.zoom.us/v2/users/'.$doctor->zoom_id.'/meetings';
 
         $response = Http::withToken($accessToken)->post($url, [
-            'topic'      => 'Online Meeting',
+            'topic'      => $data->topic,
             'type'       => self::MEETING_TYPE_SCHEDULE,
-            'start_time' => time() + config('zoom.token_life'),
-            'duration'   => 1,
-            'agenda'     => 'Meeting for Patient',
+            'start_time' => $data->start_time,
+            'duration'   => $data->duration,
+            'agenda'     => 'Meeting',
             'timezone' => 'Africa/Cairo',
         ]);
             return [
