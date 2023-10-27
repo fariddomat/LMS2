@@ -70,7 +70,7 @@
                             <p class="lead">{{ $service->main_title }}</p>
                             <form action="{{ route('orderservices.create') }}" method="get">
                             <input type="hidden" name="service_id" value="{{ $service->id }}">
-                                <button type="submit" class="btn btn-dark btn-theme-colored2 text-uppercase"> أطلب الخدمة الآن</button>
+                                <button type="submit" class="btn btn-dark btn-theme-colored2 text-uppercase" style="margin-bottom: 50px"> أطلب الخدمة الآن</button>
                             </form>
                             @if ($service->index_image != '')
                            <div class="row" style="justify-content: center"> <img alt="" src="{{ asset( $service->index_image) }}" style="max-height:450px; width: auto"/>

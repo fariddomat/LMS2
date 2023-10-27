@@ -3,8 +3,10 @@
     <!-- Meta Tags -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="منصة عربية تعليمية بريطانية موجهة للمربين العرب في جميع أنحاء العالم. نحرص في برامجنا على تزويد المربين بالمهارات و الأساليب التربوية العلمية بما يتوافق مع ثقافة المجتمع العربي">
-    <meta name="keywords" content="LMS,lms, learning management system, Mellow Minds, millow, minds, students, Dr Nermeen alqasemi, Dr Nermeen" />
+    <meta name="description"
+        content="منصة عربية تعليمية بريطانية موجهة للمربين العرب في جميع أنحاء العالم. نحرص في برامجنا على تزويد المربين بالمهارات و الأساليب التربوية العلمية بما يتوافق مع ثقافة المجتمع العربي">
+    <meta name="keywords"
+        content="LMS,lms, learning management system, Mellow Minds, millow, minds, students, Dr Nermeen alqasemi, Dr Nermeen" />
     <meta name="author" content="Dr Nermeen alqasemi" />
 
     <!-- Page Title -->
@@ -158,7 +160,8 @@
             font-family: 'Amiri';
             src: url('https://fonts.googleapis.com/css2?family=Janna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
         }
-       a {
+
+        a {
             font-family: 'Amiri';
 
             /* color: #375651; */
@@ -190,7 +193,8 @@
 
         span {
             font-family: unset';
-            /* color: #375651; */
+
+                /* color: #375651; */
         }
 
         .menuzord.theme-color1 .menuzord-menu>li.active>a,
@@ -440,6 +444,7 @@
         .INTEGRITy {
             color: #f2fffd !important;
         }
+
         /*
         FEF6EC
         EAA2A1
@@ -457,10 +462,12 @@
             color: #375651 !important;
         }
 
-        .Janna{
+        .Janna {
             font-family: Janna;
         }
     </style>
+    <link href=" {{ asset('home/css/animate.min.css') }} " rel="stylesheet">
+    <link href=" {{ asset('home/css/hover-min.css') }} " rel="stylesheet">
 
     @yield('styles')
 </head>

@@ -132,10 +132,9 @@ class ServiceController extends Controller
 
     public function destroy(Service $service)
     {
-        if ($service->index_image) {
             Storage::disk('public')->delete($service->index_image);
-            $service->index_image = null;
-            $service->save();
-        }
+            $service->delete();
+            return redirect()->back();
+
     }
 }

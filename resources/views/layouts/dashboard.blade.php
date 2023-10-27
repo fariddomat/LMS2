@@ -121,7 +121,7 @@
                              class="fa fa-medkit  "></i>
                          الطب الشمولي</a>
                  </li> --}}
-                 {{-- <li class="nav-item">
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.services.index') }}"><i class="icon-plus "></i>
                          الخدمات</a>
                  </li>
@@ -132,7 +132,7 @@
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.orderservices.index') }}"><i class="icon-plus "></i>
                          طلبات الخدمات والاستشارات</a>
-                 </li> --}}
+                 </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.contactForm.index') }}"><i class="icon-note "></i>
                          تواصل معنا</a>
@@ -211,7 +211,7 @@
 
 
      <footer class="footer">
-         <span class="text-left">CRM &copy; 2023 .
+         <span class="text-left">LMS &copy; 2023 .
          </span>
      </footer>
      <!-- Bootstrap and necessary plugins -->

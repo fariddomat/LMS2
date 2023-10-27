@@ -30,6 +30,7 @@
                                             <th>#</th>
                                             <th>العنوان</th>
                                             <th>طلب الخدمة</th>
+                                            <th>أيام العمل</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
@@ -40,7 +41,16 @@
                                                 <td>{{ $service->title }}</td>
                                                 <td>{{ $service->available == 1 ? 'متاح' : 'غير متاح' }}</td>
                                                 <td>
-                                                    <a href="{{ route('dashboard.services.edit', $service->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> تعديل</a>
+                                                    <a href="{{ route('dashboard.dayOfWorks.index', $service->id) }}" class="btn btn-success "><i class="fa fa-edit"></i> إدارة</a>
+
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('dashboard.services.edit', $service->id) }}" class="btn btn-info "><i class="fa fa-edit"></i> تعديل</a>
+                                                    <form action="{{ route('dashboard.services.destroy', $service->id) }}" method="post" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn  btn-danger delete" >حذف</button>
+                                                    </form>
                                                     {{-- لايوجد عمليات متاحة --}}
                                                 </td>
                                             </tr>

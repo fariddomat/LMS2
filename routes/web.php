@@ -158,6 +158,8 @@ Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\Lesso
 
 
     Route::resource('materials','App\Http\Controllers\Dashboard\MaterialController');
+    Route::resource('dayOfWorks', 'App\Http\Controllers\Dashboard\DayOfWorkController');
+    Route::resource('dailyAppointments', 'App\Http\Controllers\Dashboard\DailyAppointmentController');
 
  });
 

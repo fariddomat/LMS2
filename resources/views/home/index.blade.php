@@ -35,7 +35,7 @@
                                     <h2
                                         style="font-family: Cairo, Sans-serif;
                     font-size: 45px;
-                    font-weight: bold;">
+                    font-weight: bold;" class="wow bounceInUp">
                                         Mellow Minds
                                     </h2>
                                 </div>
@@ -47,7 +47,7 @@
                     <div class="container pr-100 ">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <div class="pb-50 ">
+                                <div class="pb-50 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                                     <h3 class="">{!! setting('cover1_text') !!}</h3>
                                     <h1 class="">{!! setting('cover2_text') !!}</h1>
                                     <h4 class="">{!! setting('cover3_text') !!} </h4>
@@ -60,7 +60,7 @@
                     <div class="container pr-100 ">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <div class="pb-50 pt-20">
+                                <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
                                     <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
                                         alt="">
                                 </div>
@@ -77,15 +77,15 @@
             padding-right: 25px;">
                 <div class="section-content">
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-5  wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                             <img src="{{ asset('dr2.jpeg') }}" alt=""
                                 style="border: 12px solid white;
                            ">
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-7 wow slideInLeft" data-wow-duration="1.5s" data-wow-delay="0.8s">
                             <p class="lead text-black">{!! $about->about_me !!}</p>
                             <a href="{{ route('whoiam') }}" target="_self"
-                                class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20"> قراءة المزيد </a>
+                                class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20 hvr-grow"> قراءة المزيد </a>
 
                         </div>
 
@@ -100,7 +100,7 @@
                     {{-- 3 --}}
                     <div class="row" style="margin-bottom: 75px ;">
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                                 <div class="col-md-12 academy3 m-3" style="background: #A8CDD1;padding-top: 50px;">
 
                                     <h2 style="height: 75px;
@@ -110,19 +110,19 @@
                                         {!! $about->massage !!}</h3>
                                 </div>
                             </div>
-                            <div class="col-lg-6" style="display: flex;
+                            <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s" style="display: flex;
                             align-items: center;">
                                 <img src="{{ asset('home/images/message.jpg') }}" alt="">
                             </div>
                         </div>
                         <div class="row">
 
-                            <div class="col-lg-6"
+                            <div class="col-lg-6 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s"
                                 style="display: flex;
                                  align-items: center;">
                                 <img src="{{ asset('home/images/vision.jpg') }}" alt="">
                             </div>
-                            <div class="col-lg-6 ">
+                            <div class="col-lg-6  wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                                 <div class="col-md-12 academy3 m-3" style="background: #74b0ec;padding-top: 50px;">
                                     <h2
                                         style="height: 75px;
@@ -135,7 +135,7 @@
                         </div>
                         <div class="row">
 
-                            <div class="col-lg-6 ">
+                            <div class="col-lg-6  wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                                 <div class="col-md-12 academy3 m-3"
                                     style="background: #ffcbbd;min-height: 450px !important;padding-top: 50px;">
                                     <h2 style="height: 75px;
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6" style="display: flex;
+                            <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s" style="display: flex;
                         align-items: center;">
                                 <img src="{{ asset('home/images/values.jpg') }}" alt="" style="border-radius: 35%">
                             </div>
@@ -160,7 +160,7 @@
         <!-- Section: Services -->
         <section id="services" class="divider parallax layer-overlay overlay-white-8" data-parallax-ratio="0.1"
             data-tm-bg-img="{{ asset('home/images/courses.webp') }}">
-            <div class="container pt-150 pb-150">
+            <div class="container pt-150 pb-150  wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
                 <div class="section-title text-center">
                     <div class="row">
                         <div class="col-md-12">
@@ -172,7 +172,7 @@
                 <div class="section-content pt-50">
                     <div class="row multi-row-clearfix" style="justify-content: center">
                         @foreach ($courses_count as $course)
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6 col-md-4 hvr-grow">
                                 <div class="course-item mb-30 bg-white border-1px">
                                     <div class="course-thumb"> <img alt="featured project"
                                             src="{{ $course->thumbnail_url }}" class="w-100">
@@ -214,7 +214,7 @@
                 <div class="section-content pt-50">
                     <div class="row multi-row-clearfix" style="justify-content: center">
                         @foreach ($materials as $material)
-                            <div class="col-sm-6 col-md-3">
+                            <div class="col-sm-6 col-md-3 hvr-buzz">
                                 <div class="course-item mb-30 bg-white border-1px">
                                     <div class="course-thumb"> <a href="{{ asset('materials/'.$material->file) }}" download=""><img alt="featured project"
                                         src="{{ asset('materials/'.$material->img) }}" class="w-100"></a>
