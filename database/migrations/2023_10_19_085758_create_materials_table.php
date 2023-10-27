@@ -18,6 +18,7 @@ class CreateMaterialsTable extends Migration
             $table->text('name');
             $table->text('img');
             $table->text('file');
+            $table->integer('price')->default('0');
             $table->timestamps();
         });
     }

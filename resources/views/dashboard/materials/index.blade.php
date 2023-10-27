@@ -29,6 +29,7 @@
                                         <tr>
                                             <th>الاسم</th>
                                             <th>الصورة</th>
+                                            <th>السعر</th>
                                             <th>العمليات</th>
                                         </tr>
                                     </thead>
@@ -37,6 +38,7 @@
                                             <tr>
                                                 <td>{{ $material->name }}</td>
                                                 <td><img src="{{ asset('materials/'.$material->img) }}" alt="" style="width: 50px"></td>
+                                                <td>{{ $material->price }}</td>
                                                 <td>
                                                     <form action="{{ route('dashboard.materials.destroy', $material->id) }}" method="post" style="display: inline-block;">
                                                         @csrf

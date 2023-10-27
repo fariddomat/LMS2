@@ -39,6 +39,10 @@
                                     <label for="name">الملف</label>
                                     <input type="file" class="form-control" id="name" name="file" value="{{ old('file') }}" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="name">السعر</label>
+                                    <input type="number" class="form-control" id="name" name="price" value="{{ old('price', 0) }}" required>
+                                </div>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">حفظ</button>
