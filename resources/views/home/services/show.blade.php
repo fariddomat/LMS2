@@ -5,7 +5,7 @@
     <div class="main-content-area">
         <!-- Section: page title -->
         <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center"
-            data-tm-bg-img="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}" style="margin-top: 95px; background-size: cover;">
+            data-tm-bg-img="{{ asset('header.webp') }}?v={{ setting('cover_time') }}" style="margin-top: 95px; background-size: cover;">
             <div class="container pt-50 pb-50">
                 <div class="section-content">
                     <div class="row">
@@ -68,10 +68,10 @@
                         <div class="col-lg-9">
                             <h3 class="mt-20 mb-10">{{ $service->title }}</h3>
                             <p class="lead">{{ $service->main_title }}</p>
-                            <form action="{{ route('orderservices.create') }}" method="get">
+                            {{-- <form action="{{ route('orderservices.create') }}" method="get">
                             <input type="hidden" name="service_id" value="{{ $service->id }}">
                                 <button type="submit" class="btn btn-dark btn-theme-colored2 text-uppercase" style="margin-bottom: 50px"> أطلب الخدمة الآن</button>
-                            </form>
+                            </form> --}}
                             @if ($service->index_image != '')
                            <div class="row" style="justify-content: center"> <img alt="" src="{{ asset( $service->index_image) }}" style="max-height:450px; width: auto"/>
                            </div> @endif

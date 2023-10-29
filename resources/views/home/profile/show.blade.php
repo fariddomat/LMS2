@@ -4,7 +4,7 @@
     <!-- Start main-content -->
     <div class="main-content">
         <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center"
-            data-tm-bg-img="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
+            data-tm-bg-img="{{ asset('header.webp') }}?v={{ setting('cover_time') }}"
             style="margin-top: 95px; background-size: cover;">
             <div class="container pt-50 pb-50">
                 <div class="section-content">
@@ -52,7 +52,7 @@
                         <div class="col-md-8">
 
                             <h4 class="line-bottom">الملف الشخصي:</h4>
-                            
+
                             <h3 class="mt-0">الاسم بالكامل: {{ $profile->full_name }}</h3>
                             <div class="bg-light d-flex border-bottom p-15 mb-20">
                                 <div class="flex-shrink-0">

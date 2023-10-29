@@ -58,7 +58,7 @@
                             <div class="col-md-4">
                                 <label>غلاف </label>
                                 <input type="file" name="cover1" class="form-control-file">
-                                <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
+                                <img src="{{ asset('header.webp') }}?v={{ setting('cover_time') }}"
                                     style=" margin-top: 10px; max-width: 250px;" alt="">
                             </div>
                             {{-- <div class="col-md-12">

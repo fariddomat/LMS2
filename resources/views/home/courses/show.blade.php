@@ -5,7 +5,7 @@
     <div class="main-content">
         <!-- Section: page title -->
         <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center"
-            data-tm-bg-img="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
+            data-tm-bg-img="{{ asset('header.webp') }}?v={{ setting('cover_time') }}"
             style="margin-top: 95px; background-size: cover;">
             <div class="container pt-50 pb-50">
                 <div class="section-content">
@@ -40,11 +40,11 @@
                                 @auth
                                     @if (Auth::user()->enrollments->count() == 0)
                                         <li class="font-size-16"><span class="text-theme-color-2">السعر :</span>
-                                            {{ $course->price }} ريال سعودي</li>
+                                            {{ $course->price }} $</li>
                                     @endif
                                 @else
                                     <li class="font-size-16"><span class="text-theme-color-2">السعر :</span>
-                                        {{ $course->price }} ريال سعودي</li>
+                                        {{ $course->price }} $</li>
                                 @endauth
                                 <li>
                                     <div class="star-rating" title="Rated 5 out of 5"><span style="width: 100%;">5</span>
@@ -259,11 +259,11 @@
                                     @endif
                                 </div>
                             @else
-                                <div class="col-md-12 ">
+                                {{-- <div class="col-md-12 ">
 
                                     <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white"
                                         href="{{ route('enrollments.create') }}">اشترك الآن</a>
-                                </div>
+                                </div> --}}
                             @endauth
 
 
