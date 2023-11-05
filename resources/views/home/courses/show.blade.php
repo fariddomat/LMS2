@@ -247,14 +247,14 @@
                                             </div>
                                         @endif
                                     @else
-                                        @if (Auth::user()->hasRole('user'))
+                                        @if (Auth::user())
                                             <div class="col-md-12 ">
 
                                                 <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white"
-                                                    href="{{ route('enrollments.create') }}">اشترك الآن</a>
+                                                    href="{{ route('enrollments.create',['course_id'=> $course->id]) }}">اشترك الآن</a>
                                             </div>
                                         @else
-                                            <h3>يجب ترقية نوع الحساب من خدمات إلى طالب لتتمكن من الاشتراك في الدورة</h3>
+                                            <h3>قم بتسجيل الدخول، أو قم بإنشاء حساب جديد</h3>
                                         @endif
                                     @endif
                                 </div>

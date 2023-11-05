@@ -53,9 +53,15 @@
                                                 <td class="text-danger"><a href="{{ $online_classe->join_url }}"
                                                         target="_blank">انضم الان</a></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                                        data-target="#Delete_receipt{{ $online_classe->meeting_id }}"><i
+                                                    <form action="{{ route('dashboard.online_classes.destroy', $online_classe->id) }}" method="post" style="display: inline-block;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-sm btn-danger delete" ><i
                                                             class="fa fa-trash"></i></button>
+                                                    </form>
+                                                    {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                        data-target="#Delete_receipt{{ $online_classe->meeting_id }}"><i
+                                                            class="fa fa-trash"></i></button> --}}
                                                 </td>
                                             </tr>
                                         @endforeach

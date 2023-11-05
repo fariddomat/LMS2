@@ -6,7 +6,7 @@
         <!-- Breadcrumb -->
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a>Create</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('dashboard.tags.index') }}">Tags</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard.online_classes.index') }}">Online</a></li>
             <li class="breadcrumb-item"><a href="">Admin</a>
             </li>
             <li class="breadcrumb-item active">Dashboard</li>
@@ -38,7 +38,7 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="Grade_id">الخدمة : <span class="text-danger">*</span></label><br>
+                                            <label for="Grade_id">الخدمة : <span class="text-danger">*</span></label>
                                             <select class="custom-select mr-sm-2" name="service_id">
                                                 <option selected>اختر...</option>
                                                 @foreach ($services as $service)

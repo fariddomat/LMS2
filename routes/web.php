@@ -90,6 +90,7 @@ Route::get('/clear', function() {
     Route::get('online_classes/create', 'App\Http\Controllers\Dashboard\OnlineClasseController@createView')->name('online_classes.create');
     Route::post('online_classes/store', 'App\Http\Controllers\Dashboard\OnlineClasseController@store')->name('online_classes.store');
     Route::get('online_classes/{id}/edit', 'App\Http\Controllers\Dashboard\OnlineClasseController@edit')->name('online_classes.edit');
+    Route::delete('online_classes/{id}', 'App\Http\Controllers\Dashboard\OnlineClasseController@destroy')->name('online_classes.destroy');
 
 
 

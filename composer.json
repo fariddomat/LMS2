@@ -21,6 +21,7 @@
         "macsidigital/laravel-zoom": "^5.0",
         "mcamara/laravel-localization": "^1.8",
         "santigarcor/laratrust": "^7.2",
+        "stripe/stripe-php": "^13.2",
         "tappayments/gosell": "^0.2.0"
     },
     "require-dev": {

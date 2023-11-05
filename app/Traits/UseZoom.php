@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use Log;
 use Illuminate\Support\Facades\Http;
 use App\Models\User;
+
 /**
  * Class SyncsWithFirebase
  * @package App\Traits
@@ -50,9 +51,9 @@ trait UseZoom
 
     function generateZoomAccessToken()
     {
-        $apiKey = env('Client_ID');
-        $apiSecret = env('Client_Secret');
-        $account_id = env('Account_ID');
+        $apiKey = "okz9p52cTxCz_Se9VzkaOw";
+        $apiSecret = "AAQjd0sd34fNtE8WMzosxZaX38bANmRa";
+        $account_id = "d-7PWS_cTtCEvuWUg4mTvw";
 
         $base64Credentials = base64_encode("$apiKey:$apiSecret");
 
@@ -67,9 +68,8 @@ trait UseZoom
 
         $client = new Client();
 
-        $response = $client->post('https://zoom.us/oauth/token', [
+        $response = $client->post('https://zoom.us/oauth/token?grant_type=account_credentials&account_id=d-7PWS_cTtCEvuWUg4mTvw', [
             'form_params' => [
-                'grant_type' => 'account_credentials',
                 'client_id' => $apiKey,
                 'client_secret' => $apiSecret,
             ],
@@ -127,20 +127,20 @@ trait UseZoom
         $doctor = User::findOrfail(auth()->user()->id);
 
 
-        $url = 'https://api.zoom.us/v2/users/'.$doctor->zoom_id.'/meetings';
-
+        $url = 'https://api.zoom.us/v2/users/nermeenalqasemi@gmail.com/meetings';
+        // dd( $data->start_at);
         $response = Http::withToken($accessToken)->post($url, [
             'topic'      => $data->topic,
-            'type'       => self::MEETING_TYPE_SCHEDULE,
-            'start_time' => $data->start_time,
+            'type'       => 2,
+            'start_time' => $data->start_at.'Z',
             'duration'   => $data->duration,
             'agenda'     => 'Meeting',
-            'timezone' => 'Africa/Cairo',
+            // 'timezone' => 'Africa/Cairo',
         ]);
-            return [
-                'success' => $response->getStatusCode() === 201,
-                'data'    => json_decode($response->getBody(), true),
-            ];
+        // return [
+        //     'success' => $response->getStatusCode() === 201,
+        //     'data'    => json_decode($response->getBody(), true),
+        // ];
 
 
         if ($response->successful()) {
@@ -215,7 +215,7 @@ trait UseZoom
         $url = 'https://api.zoom.us/v2/meetings/' . $id;
 
         $response = Http::withToken($accessToken)->delete($url);
-
+        // dd($response);
         if ($response->successful()) {
             // Meeting deleted successfully
             return [
@@ -228,11 +228,11 @@ trait UseZoom
         }
     }
 
-/////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
 
 
 
-  public function zoomRequest()
+    public function zoomRequest()
     {
         $token = $this->generateZoomAccessToken();
 
@@ -265,31 +265,25 @@ trait UseZoom
 
             $res = json_decode($res->body(), true);
 
-            if(isset($res['id']))
-            {
-                    $user->zoom_id = $res['id'];
-            $user->zoom_email = $email;
-            $user->save();
+            if (isset($res['id'])) {
+                $user->zoom_id = $res['id'];
+                $user->zoom_email = $email;
+                $user->save();
 
-            return $data = [
-                'message' => 'You have been associated with Ipersona Zoom portol.However, check your email inbox to accept invitation.'
-            ];
+                return $data = [
+                    'message' => 'You have been associated with Ipersona Zoom portol.However, check your email inbox to accept invitation.'
+                ];
             }
 
             return $data = ['message' => 'This email is already exist plz use another'];
-
-
         }
 
         return $data = [
             'message' => 'You have already linked with Zoom.'
         ];
-
-
-
     }
 
-   public function zoomGet(string $path, array $body = [])
+    public function zoomGet(string $path, array $body = [])
     {
         $request = $this->zoomRequest();
         return $request->get(config('zoom.base_url') . $path, $body);
@@ -305,14 +299,4 @@ trait UseZoom
         $request = $this->zoomRequest();
         return $request->post(config('zoom.base_url') . $path, $body);
     }
-
-
-
-
-
-
-
-
-
-
 }

@@ -36,7 +36,6 @@ class OnlineClasseController extends Controller
     {
         $data = $this->updatezoom($id, $data);
         return $data;
-
     }
     public function deleteZoomLink($request)
     {
@@ -61,15 +60,24 @@ class OnlineClasseController extends Controller
 
             $data = $this->create($request);
 
-            dd($data);
-            $meeting_start = $data['data']['start_url'];
-            $meeting_join = $data['data']['join_url'];
+            // dd($data['data']['id']);
 
 
             if ($data) {
+                $meeting_id = $data['data']['id'];
+                $password = $data['data']['password'];
+                $meeting_start = $data['data']['start_url'];
+                $meeting_join = $data['data']['join_url'];
+                $classe->meeting_id = $meeting_id . "";
+                $classe->password = $password;
                 $classe->start_url = $meeting_start;
                 $classe->join_url = $meeting_join;
                 $classe->save();
+                $classe->update([
+                    'meeting_id' => $data['data']['id']
+                ]);
+                // dd($classe);
+
                 return redirect($meeting_start);
             } else {
                 return redirect()->back()->with('error', 'Sorry No Meeting create');
@@ -105,18 +113,21 @@ class OnlineClasseController extends Controller
         return view('zoom.class-end');
     }
 
-    public function index() {
-        $online_classes=OnlineClasse::all();
+    public function index()
+    {
+        $online_classes = OnlineClasse::all();
         return view('dashboard.online_classes.index', compact('online_classes'));
     }
 
-    public function createView() {
-        $services=Service::all();
-        $courses=Course::all();
+    public function createView()
+    {
+        $services = Service::all();
+        $courses = Course::all();
         return view('dashboard.online_classes.create', compact('services', 'courses'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'service_id' => 'nullable',
             'course_id' => 'nullable',
@@ -125,7 +136,7 @@ class OnlineClasseController extends Controller
             'start_at' => 'required',
         ]);
 
-        $online_classe=OnlineClasse::create([
+        $online_classe = OnlineClasse::create([
             'service_id' => $request->service_id,
             'course_id' => $request->course_id,
             'user_id' => auth()->user()->id,
@@ -134,15 +145,27 @@ class OnlineClasseController extends Controller
             'start_at' => $request->start_at,
         ]);
 
-        $this->createMeeting($request,$online_classe->id);
+        $this->createMeeting($request, $online_classe->id);
 
         return redirect()->route('dashboard.online_classes.index');
-
     }
 
-    public function edit($id) {
-        $online_classes=OnlineClasse::all();
+    public function edit($id)
+    {
+        $online_classes = OnlineClasse::all();
         return view('dashboard.online_classes.index', compact('online_classes'));
     }
 
+    public function destroy($id)
+    {
+        $online_classe = OnlineClasse::findOrFail($id);
+        // dd($online_classe);
+        try {
+            $this->deleteZoomLink($online_classe->meeting_id);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        $online_classe->delete();
+        return redirect()->back();
+    }
 }
