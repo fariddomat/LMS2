@@ -36,7 +36,7 @@ class EnrollmentController extends Controller
         if (!$user)
             abort(403);
 
-        // dd(true);
+        // dd($user->email);
         $course = Course::findOrFail($request->course_id);
         $enrollment = Enrollment::where('user_id', auth()->id())
             ->where('course_id', $request->course_id)->get();
@@ -48,7 +48,7 @@ class EnrollmentController extends Controller
         $redirectUrl = 'https://mellowminds.co.uk/enrollments/tap-callback?session_id={CHECKOUT_SESSION_ID}';
         $response =  $stripe->checkout->sessions->create([
                 'success_url' => $redirectUrl,
-                'customer_email' => $user->mail,
+                'customer_email' => $user->email,
                 'payment_method_types' => ['link', 'card'],
                 'line_items' => [
                     [
