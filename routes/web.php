@@ -32,6 +32,7 @@ Route::get('/integrativeMedicine', 'App\Http\Controllers\Home\HomeController@int
 Route::post('tap-payment', 'App\Http\Controllers\TapController@payment')->name('tap.payment');
 Route::any('tap-callback','App\Http\Controllers\TapController@callback')->name('tap.callback');
 Route::any('enrollments/tap-callback','App\Http\Controllers\Home\EnrollmentController@callback')->name('enrollments.callback');
+Route::any('materials/tap-callback','App\Http\Controllers\Home\MaterialController@callback')->name('materials.callback');
   });
 
   Route::resource('profiles','App\Http\Controllers\Home\ProfileController')->only('create', 'store');
@@ -57,6 +58,7 @@ Route::get('/clear', function() {
         Route::post('services/rating','App\Http\Controllers\Home\ServiceController@rating')->name('services.rating');
 
         Route::resource('enrollments','App\Http\Controllers\Home\EnrollmentController');
+        Route::resource('materials','App\Http\Controllers\Home\MaterialController');
         Route::resource('orderservices','App\Http\Controllers\Home\OrderServiceController');
         Route::any('orderservices/tap-callback/{id}','App\Http\Controllers\Home\OrderServiceController@callback')->name('orderservices.callback');
 

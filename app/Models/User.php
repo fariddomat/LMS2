@@ -90,6 +90,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Service::class, 'order_services');
     }
 
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'order_materials');
+    }
+
 
     public function service_reviews()
     {
