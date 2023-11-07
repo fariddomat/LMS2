@@ -8,6 +8,7 @@ use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\Payment;
 use App\Models\Profile;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Stripe;
@@ -38,15 +39,19 @@ class EnrollmentController extends Controller
 
         // dd($user->email);
         $course = Course::findOrFail($request->course_id);
+
+        session()->put('course_id', $request->course_id);
         $enrollment = Enrollment::where('user_id', auth()->id())
             ->where('course_id', $request->course_id)->get();
         if ($enrollment->count() > 0) {
             session()->flash('success', 'لقد طلبت قمت بشراء هذه الدورة مسبقا !');
             return redirect()->back();
         }
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        // return redirect()->route('enrollments.callback');
+        $stripe = new \Stripe\StripeClient('sk_test_51LnVFkAKQSG9RjIjGFkDqFvDuW9mt3axN7bnovgWzlz78PgjAXk6ccQmRSJhSayQsnlq5BkvXBxr1h7palVJB72w00MWk9DaGu');
         $redirectUrl = 'https://mellowminds.co.uk/enrollments/tap-callback?session_id={CHECKOUT_SESSION_ID}';
-        $response =  $stripe->checkout->sessions->create([
+
+            $response =  $stripe->checkout->sessions->create([
                 'success_url' => $redirectUrl,
                 'customer_email' => $user->email,
                 'payment_method_types' => ['link', 'card'],
@@ -66,6 +71,7 @@ class EnrollmentController extends Controller
                 'allow_promotion_codes' => true
             ]);
         return redirect($response['url']);
+
     }
 
     public function stripeCheckout(Request $request)
@@ -74,16 +80,65 @@ class EnrollmentController extends Controller
     }
     public function stripeCheckoutSuccess(Request $request)
     {
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $session = $stripe->checkout->sessions->retrieve($request->session_id);
-        info($session);
-        return redirect()->route('stripe.index')
-                         ->with('success', 'Payment successful.');
     }
 
     public function callback(Request $request)
     {
+        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
+        $session = $stripe->checkout->sessions->retrieve($request->session_id);
+        info($session);
 
+
+        $course = Course::findOrFail(session('course_id'));
+        $enrollment = Enrollment::firstOrCreate([
+            'user_id' => auth()->id(),
+            'course_id' => $course->id
+        ]);
+
+        Payment::create([
+            'enrollment_id' => $enrollment->id,
+            'amount' => $course->price,
+            'currency' => 'USD',
+            'payment_gateway' => 'Stripe',
+            'transaction_id' => '1',
+        ]);
+        try {
+            $user = Auth::user();
+            $info = array(
+                'name' => 'إلى ' . $user->name,
+
+                'route' => route('profiles.index'),
+                'details' => 'شكرا لانضمامكم لأكاديمية هوليستك لقد تم تأكيد سدادكم يمكنكم تسجيل الدخول و متابعة الدورة على موقعنا من خلال حسابكم في الاكاديمية '
+            );
+            Mail::send('mail', $info, function ($message) use ($user) {
+                $message->to($user->email, $user->name)
+                    ->subject('تم الانضمام للأكاديمية بنجاح لدى holistichealth.sa');
+                $message->from('notify@holistichealth.sa', ' Holistic Wellness - العافية الشمولية');
+            });
+
+            session()->flash('success', 'تم إرسال الإيميل بنجاح !');
+        } catch (\Throwable $th) {
+            //throw $th;
+            session()->flash('success', 'لم يتم إرسال الإيميل بنجاح !');
+        }
+        try {
+            $user = Auth::user();
+            $info = array(
+                'name' => 'إشعار عملية شراء دورة ',
+
+                'route' => route('dashboard.enrollments.index'),
+                'details' => ' تم شراء دورة من قبل ' . $user->name . ' لباقي التفاصيل '
+            );
+            Mail::send('mail', $info, function ($message) use ($user) {
+                $message->to('notify@holistichealth.sa', 'notify')
+                    ->subject('تم شراء دورة');
+                $message->from('notify@holistichealth.sa', ' Holistic Wellness - العافية الشمولية');
+            });
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        session()->flash('success', 'لقد تمت عملية شراء الدورة بنجاح !');
+        return redirect()->route('courses.show', $course->title)->with('success', 'Payment Successfully Made.');
     }
 
     /**
