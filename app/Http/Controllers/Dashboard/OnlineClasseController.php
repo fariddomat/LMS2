@@ -122,15 +122,15 @@ class OnlineClasseController extends Controller
     public function createView()
     {
         $services = Service::all();
-        $courses = Course::all();
-        return view('dashboard.online_classes.create', compact('services', 'courses'));
+        $users = User::all();
+        return view('dashboard.online_classes.create', compact('services', 'users'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'service_id' => 'nullable',
-            'course_id' => 'nullable',
+            'service_id' => 'required',
+            'user_id' => 'required',
             'topic' => 'required',
             'duration' => 'required',
             'start_at' => 'required',
@@ -138,8 +138,7 @@ class OnlineClasseController extends Controller
 
         $online_classe = OnlineClasse::create([
             'service_id' => $request->service_id,
-            'course_id' => $request->course_id,
-            'user_id' => auth()->user()->id,
+            'user_id' => $request->user_id,
             'topic' => $request->topic,
             'duration' => $request->duration,
             'start_at' => $request->start_at,

@@ -114,7 +114,7 @@
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.online_classes.index') }}"><i
                              class="fa fa-medkit  "></i>
-                         حصص أونلاين</a>
+                         جلسات أونلاين</a>
                  </li>
                  {{-- <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.integrativeMedicines.index') }}"><i

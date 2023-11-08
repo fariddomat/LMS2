@@ -15,7 +15,7 @@ class CreateOrderMaterialsTable extends Migration
     {
         Schema::create('order_materials', function (Blueprint $table) {
             $table->id();
-            $table->string('service_id');
+            $table->string('material_id');
             $table->string('user_id');
             $table->timestamps();
         });

@@ -46,7 +46,8 @@ class MaterialController extends Controller
             ->where('material_id', $request->material_id)->get();
         if ($order_material->count() > 0) {
             session()->flash('success', 'لقد طلبت قمت بشراء هذه المادة مسبقا !');
-            return redirect()->back();
+            return redirect()->to( asset('materials/' . $material->file) );
+
         }
         // return redirect()->route('enrollments.callback');
         $stripe = new \Stripe\StripeClient('sk_test_51LnVFkAKQSG9RjIjGFkDqFvDuW9mt3axN7bnovgWzlz78PgjAXk6ccQmRSJhSayQsnlq5BkvXBxr1h7palVJB72w00MWk9DaGu');
@@ -121,7 +122,7 @@ class MaterialController extends Controller
             //throw $th;
         }
         session()->flash('success', 'لقد تمت عملية شراء materials بنجاح !');
-        return redirect()->route('home')->with('success', 'Payment Successfully Made.');
+        return redirect()->to( asset('materials/' . $material->file) );
     }
 
 

@@ -16,7 +16,6 @@ class CreateOnlineClassesTable extends Migration
         Schema::create('online_classes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('service_id')->nullable()->references('id')->on('services')->onDelete('cascade');
-            $table->foreignId('course_id')->nullable()->references('id')->on('courses')->onDelete('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('meeting_id')->nullable();
             $table->string('topic');

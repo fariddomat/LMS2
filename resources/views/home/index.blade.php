@@ -1,6 +1,14 @@
 @extends('home.layouts._app')
 @section('styles')
     <style>
+        .badge {
+
+            background: green;
+            font-size: 16px;
+            padding: 5px 15px;
+
+        }
+
         @media only screen and (max-width: 500px) {
 
             .pr-100 {
@@ -27,41 +35,41 @@
         <section id="home" class="">
             <div class="container" style="">
                 <div class="section-content">
-            <div class="row">
-                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
 
-                    <div class="container pt-80 pr-100 ">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <div class="pb-50 pt-30">
-                                    <h2
-                                        style="font-family: Cairo, Sans-serif;
+                            <div class="container pt-80 pr-100 ">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <div class="pb-50 pt-30">
+                                            <h2 style="font-family: Cairo, Sans-serif;
                     font-size: 45px;
-                    font-weight: bold;" class="wow bounceInUp">
-                                        Mellow Minds
-                                    </h2>
+                    font-weight: bold;"
+                                                class="wow bounceInUp">
+                                                Mellow Minds
+                                            </h2>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pb-50 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                                <h3 class="">{!! setting('cover1_text') !!}</h3>
+                                <h1 class="">{!! setting('cover2_text') !!}</h1>
+                                <h4 class="">{!! setting('cover3_text') !!} </h4>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
+                                <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
+                                    alt="">
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                                <div class="pb-50 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
-                                    <h3 class="">{!! setting('cover1_text') !!}</h3>
-                                    <h1 class="">{!! setting('cover2_text') !!}</h1>
-                                    <h4 class="">{!! setting('cover3_text') !!} </h4>
-                               
-                    </div>
-                </div>
-                <div class="col-md-6">
-                                <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
-                                    <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
-                                        alt="" >
-
-                </div>
-            </div>
-                </div>
-            </div>
         </section>
 
         <!-- Section: welcome -->
@@ -78,7 +86,8 @@
                         <div class="col-md-7 wow slideInLeft" data-wow-duration="1.5s" data-wow-delay="0.8s">
                             <p class="lead text-black">{!! $about->about_me !!}</p>
                             <a href="{{ route('whoiam') }}" target="_self"
-                                class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20 hvr-grow"> قراءة المزيد </a>
+                                class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20 hvr-grow"> قراءة المزيد
+                            </a>
 
                         </div>
 
@@ -103,7 +112,8 @@
                                         {!! $about->massage !!}</h3>
                                 </div>
                             </div>
-                            <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s" style="display: flex;
+                            <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s"
+                                style="display: flex;
                             align-items: center;">
                                 <img src="{{ asset('home/images/message.jpg') }}" alt="">
                             </div>
@@ -140,7 +150,8 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s" style="display: flex;
+                            <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s"
+                                style="display: flex;
                         align-items: center;">
                                 <img src="{{ asset('home/images/values.jpg') }}" alt="" style="border-radius: 35%">
                             </div>
@@ -200,7 +211,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2 class="text-uppercase title"> <span class="text-theme-colored font-weight-300">
-                                يمكنك الاستفادة أيضاً من المواد التعليمية المجانية</span></h2>
+                                    يمكنك الاستفادة أيضاً من المواد التعليمية المجانية</span></h2>
                         </div>
                     </div>
                 </div>
@@ -208,9 +219,21 @@
                     <div class="row multi-row-clearfix" style="justify-content: center">
                         @foreach ($materials as $material)
                             <div class="col-sm-6 col-md-3 hvr-buzz">
-                                <div class="course-item mb-30 bg-white border-1px">
-                                    <div class="course-thumb"> <a href="{{ asset('materials/'.$material->file) }}" download=""><img alt="featured project"
-                                        src="{{ asset('materials/'.$material->img) }}" class="w-100"></a>
+                                <div class="course-item mb-30 border-1px">
+                                    <div class="course-thumb">
+                                        @if ($material->price == 0)
+                                            <a href="{{ asset('materials/' . $material->file) }}" download="">
+                                                <span class="badge badge-success">
+                                                    مجاني
+                                                </span><img alt="featured project"
+                                                    src="{{ asset('materials/' . $material->img) }}" class="w-100"></a>
+                                        @else
+                                        <a href="{{ route('materials.create', ['material_id' => $material->id]) }}" >
+                                            <span class="badge badge-success" style="background: rgb(255, 187, 0)">
+                                                {{ $material->price }} $
+                                            </span><img alt="featured project"
+                                                src="{{ asset('materials/' . $material->img) }}" class="w-100"></a>
+                                        @endif
                                     </div>
 
                                 </div>

@@ -50,11 +50,11 @@
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="Classroom_id">الدورة : <span class="text-danger">*</span></label>
-                                            <select class="custom-select mr-sm-2" name="course_id">
+                                            <label for="Classroom_id">الشخص : <span class="text-danger">*</span></label>
+                                            <select class="custom-select mr-sm-2" name="user_id">
                                                 <option selected>اختر...</option>
-                                                @foreach ($courses as $course)
-                                                    <option value="{{ $course->id }}">{{ $course->title }}</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
