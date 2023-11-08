@@ -23,7 +23,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        abort(404);
+        // abort(404);
         $posts = Post::where('published', true)->latest()->limit(3)->get();
         $about = About::firstOrFail();
         $materials=Material::all();

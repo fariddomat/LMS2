@@ -25,6 +25,8 @@
     <div class="main-content-area">
         <!-- Section: home -->
         <section id="home" class="">
+            <div class="container" style="">
+                <div class="section-content">
             <div class="row">
                 <div class="col-md-12">
 
@@ -44,29 +46,20 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="container pr-100 ">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
                                 <div class="pb-50 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                                     <h3 class="">{!! setting('cover1_text') !!}</h3>
                                     <h1 class="">{!! setting('cover2_text') !!}</h1>
                                     <h4 class="">{!! setting('cover3_text') !!} </h4>
-                                </div>
-                            </div>
-                        </div>
+                               
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="container pr-100 ">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
                                 <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
                                     <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
-                                        alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                        alt="" >
+
+                </div>
+            </div>
                 </div>
             </div>
         </section>
