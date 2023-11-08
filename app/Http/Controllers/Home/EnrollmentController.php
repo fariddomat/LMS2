@@ -112,8 +112,8 @@ class EnrollmentController extends Controller
             );
             Mail::send('mail', $info, function ($message) use ($user) {
                 $message->to($user->email, $user->name)
-                    ->subject('تم الانضمام للأكاديمية بنجاح لدى holistichealth.sa');
-                $message->from('notify@holistichealth.sa', ' Holistic Wellness - العافية الشمولية');
+                    ->subject('تم الانضمام للأكاديمية بنجاح لدى mellowminds.co.uk');
+                $message->from('notify@mellowminds.co.uk', 'Mellowminds');
             });
 
             session()->flash('success', 'تم إرسال الإيميل بنجاح !');
@@ -130,9 +130,9 @@ class EnrollmentController extends Controller
                 'details' => ' تم شراء دورة من قبل ' . $user->name . ' لباقي التفاصيل '
             );
             Mail::send('mail', $info, function ($message) use ($user) {
-                $message->to('notify@holistichealth.sa', 'notify')
+                $message->to('notify@mellowminds.co.uk', 'notify')
                     ->subject('تم شراء دورة');
-                $message->from('notify@holistichealth.sa', ' Holistic Wellness - العافية الشمولية');
+                $message->from('notify@mellowminds.co.uk', 'Mellowminds');
             });
         } catch (\Throwable $th) {
             //throw $th;

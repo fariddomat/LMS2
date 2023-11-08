@@ -114,9 +114,9 @@ class MaterialController extends Controller
                 'details' => ' تم شراء materials من قبل ' . $user->name . ' لباقي التفاصيل '
             );
             Mail::send('mail', $info, function ($message) use ($user) {
-                $message->to('notify@holistichealth.sa', 'notify')
+                $message->to('notify@mellowminds.co.uk', 'notify')
                     ->subject('تم شراء materials');
-                $message->from('notify@holistichealth.sa', ' Holistic Wellness - العافية الشمولية');
+                $message->from('notify@mellowminds.co.uk', 'Mellowminds');
             });
         } catch (\Throwable $th) {
             //throw $th;

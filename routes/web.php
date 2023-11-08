@@ -33,7 +33,9 @@ Route::post('tap-payment', 'App\Http\Controllers\TapController@payment')->name('
 Route::any('tap-callback','App\Http\Controllers\TapController@callback')->name('tap.callback');
 Route::any('enrollments/tap-callback','App\Http\Controllers\Home\EnrollmentController@callback')->name('enrollments.callback');
 Route::any('materials/tap-callback','App\Http\Controllers\Home\MaterialController@callback')->name('materials.callback');
-  });
+Route::any('orderservices/tap-callback','App\Http\Controllers\Home\OrderServiceController@callback')->name('orderservices.callback');
+
+});
 
   Route::resource('profiles','App\Http\Controllers\Home\ProfileController')->only('create', 'store');
 
@@ -60,7 +62,6 @@ Route::get('/clear', function() {
         Route::resource('enrollments','App\Http\Controllers\Home\EnrollmentController');
         Route::resource('materials','App\Http\Controllers\Home\MaterialController');
         Route::resource('orderservices','App\Http\Controllers\Home\OrderServiceController');
-        Route::any('orderservices/tap-callback/{id}','App\Http\Controllers\Home\OrderServiceController@callback')->name('orderservices.callback');
 
         Route::resource('lessons','App\Http\Controllers\Home\LessonController')->only('show');
     });
