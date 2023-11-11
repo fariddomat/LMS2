@@ -51,8 +51,10 @@
 
 
         <!-- Section: welcome -->
+
+        <div class="curved-div" style="background: #cee1e3">
         <section id="welcome" class="divider parallax " style="background: #cee1e3">
-            <div class="container pt-150 pb-150" style="  padding-left: 25px;
+            <div class="container pt-150 pb-50" style="  padding-left: 25px;
             padding-right: 25px;">
                 <div class="section-content">
                     <div class="row">
@@ -63,18 +65,17 @@
                         </div>
                         <div class="col-md-7">
                             <p class="lead text-black">{!! $about->about_me !!}</p>
-                            <a href="{{ route('whoiam') }}" target="_self"
-                                class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20"> قراءة المزيد </a>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </section>
 
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,128L80,117.3C160,107,320,85,480,96C640,107,800,149,960,144C1120,139,1280,85,1360,58.7L1440,32L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+    </div>
+
         <section class="">
-            <div class="container">
+            <div class="container" style="padding-top: 0px;">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="">

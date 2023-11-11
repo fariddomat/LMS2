@@ -26,55 +26,70 @@
                 padding: 0 10px !important;
             }
         }
+
+        .curved-div {
+            background: #f2fffd;
+        }
+
     </style>
 @endsection
 @section('content')
     <!-- Start main-content -->
+
     <div class="main-content-area">
         <!-- Section: home -->
-        <section id="home" class="">
-            <div class="container" style="">
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-md-12">
+        <div class="curved-div">
 
-                            <div class="container pt-80 pr-100 ">
-                                <div class="row">
-                                    <div class="col-md-12 text-center">
-                                        <div class="pb-50 pt-30">
-                                            <h2 style="font-family: Cairo, Sans-serif;
-                    font-size: 45px;
-                    font-weight: bold;"
-                                                class="wow bounceInUp">
-                                                Mellow Minds
-                                            </h2>
+            <section id="home" class="">
+                <div class="container" style="padding-bottom: 50px">
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="container pt-80 pr-100 ">
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <div class="pb-50 pt-30">
+                                                <h2 style="font-family: Candal, Sans-serif;
+                                                    font-size: 45px;
+                                                    font-weight: bold;"
+                                                    class="wow bounceInUp">
+                                                    Mellow Minds
+                                                </h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="pb-50 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
-                                <h3 class="">{!! setting('cover1_text') !!}</h3>
-                                <h1 class="">{!! setting('cover2_text') !!}</h1>
-                                <h4 class="">{!! setting('cover3_text') !!} </h4>
+                            <div class="col-md-6">
+                                <div class="pb-50 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                                    <h3 class="">{!! setting('cover1_text') !!}</h3>
+                                    <h1 class="">{!! setting('cover2_text') !!}</h1>
+                                    <h4 class="">{!! setting('cover3_text') !!} </h4>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
-                                <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
-                                    alt="">
+                            <div class="col-md-6">
+                                <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
+                                    <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
+                                        alt="">
 
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        </section>
+            </section>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#cee1e3" fill-opacity="1"
+                    d="M0,192L34.3,208C68.6,224,137,256,206,250.7C274.3,245,343,203,411,192C480,181,549,203,617,192C685.7,181,754,139,823,138.7C891.4,139,960,181,1029,170.7C1097.1,160,1166,96,1234,74.7C1302.9,53,1371,75,1406,85.3L1440,96L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+                </path>
+            </svg>
+        </div>
 
         <!-- Section: welcome -->
+        <div class="curved-div" style="background: #cee1e3">
         <section id="welcome" class="divider parallax " style="background: #cee1e3">
-            <div class="container pt-150 pb-150" style="  padding-left: 25px;
+            <div class="container pt-50 pb-50" style="  padding-left: 25px;
             padding-right: 25px;">
                 <div class="section-content">
                     <div class="row">
@@ -95,7 +110,8 @@
                 </div>
             </div>
         </section>
-
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,224L60,197.3C120,171,240,117,360,122.7C480,128,600,192,720,202.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+        </div>
         <section class="z-index-1">
             <div class="container">
                 <div class="section-content">
@@ -218,21 +234,21 @@
                 <div class="section-content pt-50">
                     <div class="row multi-row-clearfix" style="justify-content: center">
                         @foreach ($materials as $material)
-                            <div class="col-sm-6 col-md-3 hvr-buzz">
+                            <div class="col-sm-6 col-md-3  hvr-grow">
                                 <div class="course-item mb-30 border-1px">
                                     <div class="course-thumb">
                                         @if ($material->price == 0)
                                             <a href="{{ asset('materials/' . $material->file) }}" download="">
-                                                <span class="badge badge-success">
+                                                <span class="badge badge-success" style="position: absolute;">
                                                     مجاني
                                                 </span><img alt="featured project"
                                                     src="{{ asset('materials/' . $material->img) }}" class="w-100"></a>
                                         @else
-                                        <a href="{{ route('materials.create', ['material_id' => $material->id]) }}" >
-                                            <span class="badge badge-success" style="background: rgb(255, 187, 0)">
-                                                {{ $material->price }} $
-                                            </span><img alt="featured project"
-                                                src="{{ asset('materials/' . $material->img) }}" class="w-100"></a>
+                                            <a href="{{ route('materials.create', ['material_id' => $material->id]) }}">
+                                                <span class="badge badge-success" style="background: rgb(255, 187, 0);position: absolute;">
+                                                    {{ $material->price }} $
+                                                </span><img alt="featured project"
+                                                    src="{{ asset('materials/' . $material->img) }}" class="w-100"></a>
                                         @endif
                                     </div>
 

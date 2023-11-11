@@ -38,5 +38,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.contentsCss = '/css/fonts.css';
 	//the next line add the new font to the combobox in CKEditor
 	config.font_names = config.font_names +';29ltbukrabold;29ltbukrabolditalic;29ltbukralight;29ltbukraregular;' +
-	'Al-Jazeera-Arabic-Regular;Amiri;Cairo-Regular;Droid;Jozoor-Font;Hacen-Algeria-Bd;Janna' ;
+	'Al-Jazeera-Arabic-Regular;Candal;Amiri;Cairo-Regular;Droid;Jozoor-Font;Hacen-Algeria-Bd;Janna' ;
 };

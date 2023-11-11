@@ -146,23 +146,22 @@
         }
     </style>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
     <style>
         @font-face {
-            font-family: 'Janna';
+            font-family: 'Candal';
             src: url({{ asset('home/fonts/ArbFONTS-Janna-LT-Regular.ttf') }});
         }
 
         @font-face {
-            font-family: 'Amiri';
+            font-family: 'Janna';
             src: url('https://fonts.googleapis.com/css2?family=Janna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
         }
 
         a {
-            font-family: 'Amiri';
+            font-family: 'Candal';
 
             /* color: #375651; */
         }
@@ -182,12 +181,12 @@
         h1,
         h2,
         h3 {
-            font-family: 'Amiri';
+            font-family: 'Candal';
             /* color: #375651; */
         }
 
         p {
-            font-family: 'Amiri';
+            font-family: 'Candal';
             /* color: #375651; */
         }
 
@@ -463,7 +462,7 @@
         }
 
         .Janna {
-            font-family: Janna;
+            font-family: Candal;
         }
     </style>
     <link href=" {{ asset('home/css/animate.min.css') }} " rel="stylesheet">
