@@ -19,11 +19,11 @@ class AboutController extends Controller
     {
         $rules = [
             'about_me' => ['required'],
-            'brief' => ['required'],
-            'who' => ['required'],
-            'history' => ['required'],
+            // 'brief' => ['required'],
+            // 'who' => ['required'],
+            // 'history' => ['required'],
             'massage' => ['required'],
-            'goals' => ['required'],
+            // 'goals' => ['required'],
             'vision' => ['required'],
             'ambition' => ['required'],
         ];
@@ -35,11 +35,11 @@ class AboutController extends Controller
         }
 
         $about->about_me = $validatedData['about_me'];
-        $about->brief = $validatedData['brief'];
-        $about->who_are_we = $validatedData['who'];
-        $about->history = $validatedData['history'];
+        // $about->brief = $validatedData['brief'];
+        // $about->who_are_we = $validatedData['who'];
+        // $about->history = $validatedData['history'];
         $about->massage = $validatedData['massage'];
-        $about->goals = $validatedData['goals'];
+        // $about->goals = $validatedData['goals'];
         $about->vision = $validatedData['vision'];
         $about->ambition = $validatedData['ambition'];
         $about->save();
