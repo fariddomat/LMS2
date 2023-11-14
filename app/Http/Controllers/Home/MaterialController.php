@@ -70,7 +70,7 @@ class MaterialController extends Controller
                     ],
                 ],
                 'mode' => 'payment',
-                'allow_promotion_codes' => true
+                'allow_promotion_codes' => false
             ]);
         return redirect($response['url']);
 
@@ -86,9 +86,9 @@ class MaterialController extends Controller
 
     public function callback(Request $request)
     {
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $session = $stripe->checkout->sessions->retrieve($request->session_id);
-        info($session);
+        // $stripe = new \Stripe\StripeClient('sk_test_51LnVFkAKQSG9RjIjGFkDqFvDuW9mt3axN7bnovgWzlz78PgjAXk6ccQmRSJhSayQsnlq5BkvXBxr1h7palVJB72w00MWk9DaGu');
+        // $session = $stripe->checkout->sessions->retrieve($request->session_id);
+        // info($session);
 
 
         $material = Material::findOrFail(session('material_id'));

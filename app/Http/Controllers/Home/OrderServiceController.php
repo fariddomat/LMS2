@@ -47,7 +47,7 @@ class OrderServiceController extends Controller
         }
         session()->put('service_id', $request->service_id);
 
-        $profile = Profile::where('email', $user->email)->firstOrFail();
+        // $profile = Profile::where('email', $user->email)->firstOrFail();
          // return redirect()->route('enrollments.callback');
          $stripe = new \Stripe\StripeClient('sk_test_51LnVFkAKQSG9RjIjGFkDqFvDuW9mt3axN7bnovgWzlz78PgjAXk6ccQmRSJhSayQsnlq5BkvXBxr1h7palVJB72w00MWk9DaGu');
          $redirectUrl = 'https://mellowminds.co.uk/orderservices/tap-callback';
@@ -79,18 +79,20 @@ class OrderServiceController extends Controller
 
     public function callback(Request $request)
     {
-        $stripe = new \Stripe\StripeClient(env('STRIPE_SECRET'));
-        $session = $stripe->checkout->sessions->retrieve($request->session_id);
-        info($session);
+        // $stripe = new \Stripe\StripeClient('sk_test_51LnVFkAKQSG9RjIjGFkDqFvDuW9mt3axN7bnovgWzlz78PgjAXk6ccQmRSJhSayQsnlq5BkvXBxr1h7palVJB72w00MWk9DaGu');
+        // $session = $stripe->checkout->sessions->retrieve($request->session_id);
+        // info($session);
+        // dd($session);
         $service = Service::findOrFail(session('service_id'));
 
-
-
-
+        OrderService::create([
+            'user_id' => auth()->id(),
+            'service_id' => $service->id,
+        ]);
         PaymentService::create([
             'user_id' => auth()->id(),
             'service_id' => $service->id,
-            'amount' => $service->amount,
+            'amount' => $service->price,
             'currency' => 'USD',
             'payment_gateway' => 'stripe',
             'transaction_id' => 1,
