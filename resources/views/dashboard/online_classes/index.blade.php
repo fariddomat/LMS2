@@ -31,7 +31,6 @@
                                         <tr class="alert-success">
                                             <th>#</th>
                                             <th>الخدمة</th>
-                                            <th>الدورة</th>
                                             <th>الاسم</th>
                                             <th>عنوان الحصة</th>
                                             <th>تاريخ البداية</th>
@@ -45,7 +44,6 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $online_classe->service->title }}</td>
-                                                <td>{{ $online_classe->course->title }}</td>
                                                 <td>{{ $online_classe->user->name }}</td>
                                                 <td>{{ $online_classe->topic }}</td>
                                                 <td>{{ $online_classe->start_at }}</td>
@@ -53,6 +51,7 @@
                                                 <td class="text-danger"><a href="{{ $online_classe->join_url }}"
                                                         target="_blank">انضم الان</a></td>
                                                 <td>
+                                                    <a href="{{ route('dashboard.online_classes.notify', $online_classe->id) }}" class="btn btn-sm btn-primary">إرسال إشعار</a>
                                                     <form action="{{ route('dashboard.online_classes.destroy', $online_classe->id) }}" method="post" style="display: inline-block;">
                                                         @csrf
                                                         @method('DELETE')

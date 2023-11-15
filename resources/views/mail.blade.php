@@ -8,7 +8,7 @@ text-align: center; box-sizing: border-box;
     text-decoration: none;"
     dir="rtl">
     <h2>{{ $name }}</h2>
-    <p style="  padding-bottom: 15px;">{{ $details }}</p>
+    <p style="  padding-bottom: 15px;">{!! $details !!}</p>
     <a href="{{ $route }}"
         style="box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -23,6 +23,6 @@ text-align: center; box-sizing: border-box;
         هنا</a>
     <br><br>
     <hr style="margin-top:25px;">
-    <h3>إشعار من موقع <a href="https://holistichealth.sa/">الطب الشمولي</a></h3>
-    <img src="https://holistichealth.sa/logo.webp" alt="" style="max-width: 250px">
+    <h3>إشعار من موقع <a href="https://mellowminds.co.uk/">Mellowminds</a></h3>
+    <img src="https://mellowminds.co.uk/logo.webp" alt="" style="max-width: 250px">
 </div>

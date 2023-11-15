@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use MacsiDigital\Zoom\Facades\Zoom;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Client;
-
+use Mail;
 
 class OnlineClasseController extends Controller
 {
@@ -165,6 +165,31 @@ class OnlineClasseController extends Controller
             //throw $th;
         }
         $online_classe->delete();
+        return redirect()->back();
+    }
+
+    public function notify(Request $request,$id){
+        try {
+            $online_classe=OnlineClasse::findOrFail($id);
+            $user = User::finfOrFail($online_classe->user->id);
+            $info = array(
+                'name' => 'إشعار حجز جلسة لدى mellowminds ',
+
+                'route' => route('home'),
+                'details' => ' تم حجز جلسة  ' . $online_classe->service->title . ' <br> بعنوان :  ' .  $online_classe->topic  . ' <br>التاريخ والوقت :  ' . $online_classe->start_at . ' لباقي التفاصيل '
+            );
+            Mail::send('mail', $info, function ($message) use ($user) {
+                $message->to('notify@mellowminds.co.uk', 'notify')
+                    ->subject('تم حجز استشارة - mellowminds');
+                $message->from('notify@mellowminds.co.uk', 'Mellowminds');
+            });
+
+            session()->flash('success', 'تم إرسال الاشعار بنجاح !');
+        } catch (\Throwable $th) {
+            //throw $th;
+
+        session()->flash('success', 'لم يتم إرسال الاشعار بنجاح !');
+        }
         return redirect()->back();
     }
 }

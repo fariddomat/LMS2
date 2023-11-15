@@ -94,7 +94,7 @@ Route::get('/clear', function() {
     Route::post('online_classes/store', 'App\Http\Controllers\Dashboard\OnlineClasseController@store')->name('online_classes.store');
     Route::get('online_classes/{id}/edit', 'App\Http\Controllers\Dashboard\OnlineClasseController@edit')->name('online_classes.edit');
     Route::delete('online_classes/{id}', 'App\Http\Controllers\Dashboard\OnlineClasseController@destroy')->name('online_classes.destroy');
-
+    Route::post('online_classes/notify/id', 'App\Http\Controllers\Dashboard\OnlineClasseController@notify')->name('online_classes.notify');
 
 
     Route::get('lessons/{lesson}/lesson_files/create','App\Http\Controllers\Dashboard\LessonFileController@create')->name('lesson.files.create');
