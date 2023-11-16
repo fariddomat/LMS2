@@ -11,34 +11,34 @@ position: relative;">
                             <nav id="top-primary-nav" class="menuzord theme-color1 pull-left flip menuzord-responsive"
                                 data-effect="slide" data-animation="none" data-align="right">
                                 <ul id="main-nav" class="menuzord-menu">
-                                    <li class="{{ Request::is('/') ? 'active' : '' }}  menu-item">
+                                    <li class="{{ Request::is('/') ? 'active' : '' }}  menu-item hvr-grow ">
                                         <a href="{{ route('home') }}">الرئيسية</a>
                                     </li>
 
-                                    <li class="{{ Request::is('whoiam') ? 'active' : '' }} menu-item">
+                                    <li class="{{ Request::is('whoiam') ? 'active' : '' }} menu-item hvr-grow">
                                         <a href="{{ route('whoiam') }}">من أنا</a>
                                     </li>
-                                    <li class="{{ Request::is('service*') ? 'active' : '' }} menu-item">
+                                    <li class="{{ Request::is('service*') ? 'active' : '' }} menu-item hvr-grow">
                                         <a href="{{ route('services.index') }}">الخدمات</a>
                                     </li>
-                                    <li class="{{ Request::is('courses*') ? 'active' : '' }} menu-item">
+                                    <li class="{{ Request::is('courses*') ? 'active' : '' }} menu-item hvr-grow">
                                         <a href="{{ route('courses.index') }}">الدورات</a>
                                     </li>
-                                    <li class="{{ Request::is('posts*') ? 'active' : '' }} menu-item">
+                                    <li class="{{ Request::is('posts*') ? 'active' : '' }} menu-item hvr-grow">
                                         <a href="{{ route('posts.index') }}">المدونة</a>
                                     </li>
-                                    <li class="{{ Request::is('contactPage') ? 'active' : '' }} menu-item">
+                                    <li class="{{ Request::is('contactPage') ? 'active' : '' }} menu-item hvr-grow">
                                         <a href="{{ route('contactPage') }}">اتصل بنا</a>
                                     </li>
                                     @auth
                                         @if (Auth::user()->hasRole('user'))
-                                            <li class="{{ Request::is('profiles*') ? 'active' : '' }}  menu-item">
+                                            <li class="{{ Request::is('profiles*') ? 'active' : '' }}  menu-item hvr-grow">
                                                 <a href="{{ route('profiles.index') }}">الملف الشخصي</a>
                                             </li>
                                         @endif
                                     @endauth
                                     @auth
-                                        <li class="menu-item">
+                                        <li class="menu-item hvr-grow">
                                             <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
@@ -51,7 +51,7 @@ position: relative;">
                                             </a>
                                         </li>
                                     @else
-                                        <li class="{{ Request::is('login') ? 'active' : '' }} menu-item">
+                                        <li class="{{ Request::is('login') ? 'active' : '' }} menu-item hvr-grow">
                                             <a href="{{ route('login') }}">دخول</a>
                                         </li>
                                     @endauth
@@ -59,7 +59,7 @@ position: relative;">
                             </nav>
                         </div>
                         <div class="col-sm-auto ms-auto align-self-center">
-                            <a class="menuzord-brand site-brand" href="{{ route('home') }}">
+                            <a class="menuzord-brand site-brand hvr-grow" href="{{ route('home') }}">
                                 <img class="logo-default logo-1x " src="{{ asset('logo.webp') }}" alt="Logo">
                                 {{-- <span class="ttt">
                                     {{ setting('site_name') }}

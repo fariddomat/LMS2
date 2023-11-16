@@ -30,7 +30,6 @@
         .curved-div {
             background: #f2fffd;
         }
-
     </style>
 @endsection
 @section('content')
@@ -71,8 +70,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
-                                    <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
-                                        alt="">
+                                    <img class="hvr-grow" src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
+                                        alt="" style="border: 12px solid #cee1e3; border-radius: 15px">
 
                                 </div>
                             </div>
@@ -88,29 +87,34 @@
 
         <!-- Section: welcome -->
         <div class="curved-div" style="background: #cee1e3">
-        <section id="welcome" class="divider parallax " style="background: #cee1e3">
-            <div class="container pt-50 pb-50" style="  padding-left: 25px;
+            <section id="welcome" class="divider parallax " style="background: #cee1e3">
+                <div class="container pt-50 pb-50" style="  padding-left: 25px;
             padding-right: 25px;">
-                <div class="section-content">
-                    <div class="row">
-                        <div class="col-md-5  wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <img src="{{ asset('dr2.jpeg') }}" alt=""
-                                style="border: 12px solid white;
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-5  wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
+                                <img class="hvr-grow" src="{{ asset('dr2.jpeg') }}" alt=""
+                                    style="border: 12px solid white;
                            ">
-                        </div>
-                        <div class="col-md-7 wow slideInLeft" data-wow-duration="1.5s" data-wow-delay="0.8s">
-                            <p class="lead text-black">{!! $about->about_me !!}</p>
-                            <a href="{{ route('whoiam') }}" target="_self"
-                                class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20 hvr-grow"> قراءة المزيد
-                            </a>
+                            </div>
+                            <div class="col-md-7 wow slideInLeft" data-wow-duration="1.5s" data-wow-delay="0.8s">
+                                <p class="lead text-black">{!! $about->about_me !!}</p>
+                                <a href="{{ route('whoiam') }}" target="_self"
+                                    class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20 hvr-grow"> قراءة
+                                    المزيد
+                                </a>
+
+                            </div>
 
                         </div>
-
                     </div>
                 </div>
-            </div>
-        </section>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,224L60,197.3C120,171,240,117,360,122.7C480,128,600,192,720,202.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+            </section>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#fff" fill-opacity="1"
+                    d="M0,224L60,197.3C120,171,240,117,360,122.7C480,128,600,192,720,202.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                </path>
+            </svg>
         </div>
         <section class="z-index-1">
             <div class="container">
@@ -169,7 +173,8 @@
                             <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s"
                                 style="display: flex;
                         align-items: center;">
-                                <img src="{{ asset('home/images/values.jpg') }}" alt="" style="border-radius: 35%">
+                                <img src="{{ asset('home/images/values.jpg') }}" alt=""
+                                    style="border-radius: 35%">
                             </div>
                         </div>
                     </div>
@@ -194,8 +199,10 @@
                         @foreach ($courses_count as $course)
                             <div class="col-sm-6 col-md-4 hvr-grow">
                                 <div class="course-item mb-30 bg-white border-1px">
-                                    <div class="course-thumb"> <img alt="featured project"
-                                            src="{{ $course->thumbnail_url }}" class="w-100">
+                                    <div class="course-thumb"><a href="{{ route('courses.show', $course->title) }}">
+                                            <img alt="featured project" src="{{ $course->thumbnail_url }}"
+                                                class="w-100">
+                                        </a>
                                         @auth
                                             @if (Auth::user()->enrollments->count() == 0)
                                                 <h4 class="price mt-0 mb-0">{{ $course->price }}</h4>
@@ -207,10 +214,17 @@
                                     <div class="content text-left flip p-25 pt-0">
                                         <h4 class="line-bottom line-bottom-theme-colored1 mb-30 pb-0"
                                             style="  min-height: 55px;">
-                                            {{ $course->title }}</h4>
-                                        <p style="min-height: 130px">{{ $course->description }}</p>
-                                        <a class="btn btn-dark btn-theme-colored2 btn-xs text-uppercase mt-10"
-                                            href="{{ route('courses.show', $course->title) }}">التفاصيل</a>
+                                            <a href="{{ route('courses.show', $course->title) }}">
+                                                {{ $course->title }}
+                                            </a>
+                                        </h4>
+                                        <p style="min-height: 130px;margin-bottom:0;">{{ $course->description }}</p>
+                                        <div class="row" style="text-align: center"><a
+                                                class="btn btn-dark btn-theme-colored2 btn-xs text-uppercase mt-10"
+                                                href="{{ route('courses.show', $course->title) }}"
+                                                style="margin: 0 auto;
+                                      max-width: 170px;">التفاصيل</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +259,8 @@
                                                     src="{{ asset('materials/' . $material->img) }}" class="w-100"></a>
                                         @else
                                             <a href="{{ route('materials.create', ['material_id' => $material->id]) }}">
-                                                <span class="badge badge-success" style="background: rgb(255, 187, 0);position: absolute;">
+                                                <span class="badge badge-success"
+                                                    style="background: rgb(255, 187, 0);position: absolute;">
                                                     {{ $material->price }} $
                                                 </span><img alt="featured project"
                                                     src="{{ asset('materials/' . $material->img) }}" class="w-100"></a>

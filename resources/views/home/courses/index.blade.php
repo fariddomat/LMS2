@@ -59,27 +59,37 @@
                     <div class="col-md-9 blog-float-end">
                         <div class="row">
                             @foreach ($courses as $course)
-                                <div class="col-sm-6 col-md-4">
-                                    <div class="course-item mb-30 bg-white border-1px">
-                                        <div class="course-thumb"> <img alt="featured project"
-                                                src="{{ $course->thumbnail_url }}" class="w-100">
-                                            @auth
-                                                @if (Auth::user()->enrollments->count() == 0)
-                                                    <h4 class="price mt-0 mb-0">{{ $course->price }}</h4>
-                                                @endif
-                                            @else
+                            <div class="col-sm-6 col-md-4 hvr-grow">
+                                <div class="course-item mb-30 bg-white border-1px">
+                                    <div class="course-thumb"><a href="{{ route('courses.show', $course->title) }}">
+                                            <img alt="featured project" src="{{ $course->thumbnail_url }}"
+                                                class="w-100">
+                                        </a>
+                                        @auth
+                                            @if (Auth::user()->enrollments->count() == 0)
                                                 <h4 class="price mt-0 mb-0">{{ $course->price }}</h4>
-                                            @endauth
-                                        </div>
-                                        <div class="content text-left flip p-25 pt-0">
-                                            <h4 class="line-bottom line-bottom-theme-colored1 mb-30 pb-0" style="  min-height: 55px;">
-                                                {{ $course->title }}</h4>
-                                            <p style="min-height: 130px">{{ $course->description }}</p>
-                                            <a class="btn btn-dark btn-theme-colored2 btn-xs text-uppercase mt-10"
-                                                href="{{ route('courses.show', $course->title) }}">التفاصيل</a>
+                                            @endif
+                                        @else
+                                            <h4 class="price mt-0 mb-0">{{ $course->price }}</h4>
+                                        @endauth
+                                    </div>
+                                    <div class="content text-left flip p-25 pt-0">
+                                        <h4 class="line-bottom line-bottom-theme-colored1 mb-30 pb-0"
+                                            style="  min-height: 55px;">
+                                            <a href="{{ route('courses.show', $course->title) }}">
+                                                {{ $course->title }}
+                                            </a>
+                                        </h4>
+                                        <p style="min-height: 130px;margin-bottom:0;">{{ $course->description }}</p>
+                                        <div class="row" style="text-align: center"><a
+                                                class="btn btn-dark btn-theme-colored2 btn-xs text-uppercase mt-10"
+                                                href="{{ route('courses.show', $course->title) }}"
+                                                style="margin: 0 auto;
+                                      max-width: 170px;">التفاصيل</a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             @endforeach
                         </div>
                         <div class="row">
