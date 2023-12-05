@@ -54,7 +54,7 @@
                             <h4 class="line-bottom">الملف الشخصي:</h4>
 
                             <h3 class="mt-0">الاسم بالكامل: {{ $profile->full_name }}</h3>
-                            <div class="bg-light d-flex border-bottom p-15 mb-20">
+                            {{-- <div class="bg-light d-flex border-bottom p-15 mb-20">
                                 <div class="flex-shrink-0">
                                     <i class="pe-7s-pen text-theme-colored font-size-24 mt-1 me-3"></i>
                                 </div>
@@ -62,7 +62,7 @@
                                     <h5 class="mt-0 mb-0">معلومات عني:</h5>
                                     <p>{{ $profile->about }}</p>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="bg-light d-flex border-bottom p-15 mb-20">
                                 <div class="flex-shrink-0">
                                     <i class="fa fa-phone text-theme-colored font-size-24 mt-1 me-3"></i>
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
 
-                            <div class="bg-light d-flex border-bottom p-15 mb-20">
+                            {{-- <div class="bg-light d-flex border-bottom p-15 mb-20">
                                 <div class="flex-shrink-0">
                                     <i class="fa fa-map-marker text-theme-colored font-size-24 mt-1 me-3"></i>
                                 </div>
@@ -84,7 +84,7 @@
                                     <h5 class="mt-0 mb-0">العنوان:</h5>
                                     <p>{{ $profile->address }}</p>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- <ul class="styled-icons icon-dark icon-theme-colored2 icon-circled icon-sm">
                                 <li><a class="styled-icons-item" target="_blank" href="#"><i
                                             class="fab fa-facebook"></i></a></li>

@@ -58,7 +58,7 @@
                                                     <input name="email" class="form-control" value="{{ old('email', $profile->email) }}" type="email">
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            {{-- <div class="row">
                                                 <div class="form-group col-md-12">
                                                     <label>تاريخ الميلاد</label>
                                                     <input name="birth_date" value="{{ old('birth_date', $profile->birth_date) }}" class="form-control"
@@ -97,7 +97,7 @@
                                                     <label>لماذا ترغب بالانضمام؟</label>
                                                     <textarea name="why" class="form-control">{{ old('why', $profile->why) }}</textarea>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group">
                                                 <button class="btn btn-dark btn-lg btn-block mt-15" type="submit">تحديث</button>
                                             </div>

@@ -13,8 +13,8 @@
                          <ul>
                              <li><strong>رقم الهاتف :</strong> <a
                                      href= "tel:{{ setting('site_phone') }}">{{ setting('site_phone') }}</a></li>
-                             <li><strong>رقم الهاتف2:</strong> <a
-                                     href="tel:{{ setting('site_phone2') }}">{{ setting('site_phone2') }}</a></li>
+                             <li><strong>واتساب:</strong> <a
+                                     href="https://api.whatsapp.com/send?phone={{ setting('site_phone2') }}">{{ setting('site_phone2') }}</a></li>
                              <li><strong>البريد الالكتروني:</strong> <a
                                      href="mailto:{{ setting('site_email') }}">{{ setting('site_email') }}</a></li>
                          </ul>

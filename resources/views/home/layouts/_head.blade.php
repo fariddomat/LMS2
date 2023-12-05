@@ -146,9 +146,9 @@
         }
     </style>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Candal&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Candal';
@@ -163,6 +163,7 @@
         body {
             font-family: 'Candal';
         }
+
         a {
             font-family: 'Candal';
 
@@ -386,6 +387,10 @@
         }
     </style>
     <style>
+        .course-item .course-thumb .price {
+            background: #A2DFC4;
+        }
+
         .rating2 {
             float: right;
             border: none;

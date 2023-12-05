@@ -68,10 +68,11 @@
 
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s">
-                                    <img class="hvr-grow" src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
-                                        alt="" style="border: 12px solid #cee1e3; border-radius: 15px">
+                            <div class="col-md-6" style="justify-content: center">
+                                <div class="pb-50 pt-20 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.8s" style="text-align: center">
+                                    <img class="hvr-grow"
+                                        src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
+                                        alt="" style="border: 12px solid #cee1e3; border-radius: 15px;max-width: 75%;">
 
                                 </div>
                             </div>
@@ -123,7 +124,7 @@
                     <div class="row" style="margin-bottom: 75px ;">
                         <div class="row">
                             <div class="col-lg-6 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
-                                <div class="col-md-12 academy3 m-3" style="background: #A8CDD1;padding-top: 50px;">
+                                <div class="col-md-12 academy3 m-3" style="background: #74b0ec;padding-top: 50px;">
 
                                     <h2 style="height: 75px;
                                 padding-top: 25px;">
@@ -134,16 +135,16 @@
                             </div>
                             <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s"
                                 style="display: flex;
-                            align-items: center;">
-                                <img src="{{ asset('home/images/message.jpg') }}" alt="">
+                            align-items: center; justify-content: center">
+                                <img src="{{ asset('home/images/message.jpg') }}" alt="" style="max-width: 75%;">
                             </div>
                         </div>
                         <div class="row">
 
                             <div class="col-lg-6 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s"
                                 style="display: flex;
-                                 align-items: center;">
-                                <img src="{{ asset('home/images/vision.jpg') }}" alt="">
+                                 align-items: center; justify-content: center">
+                                <img src="{{ asset('home/images/vision.jpg') }}" alt="" style="max-width: 65%;">
                             </div>
                             <div class="col-lg-6  wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                                 <div class="col-md-12 academy3 m-3" style="background: #74b0ec;padding-top: 50px;">
@@ -156,7 +157,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
 
                             <div class="col-lg-6  wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                                 <div class="col-md-12 academy3 m-3"
@@ -172,11 +173,11 @@
 
                             <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s"
                                 style="display: flex;
-                        align-items: center;">
+                            align-items: center;">
                                 <img src="{{ asset('home/images/values.jpg') }}" alt=""
                                     style="border-radius: 35%">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -184,7 +185,7 @@
         </section>
         <!-- Section: Services -->
         <section id="services" class="divider parallax layer-overlay overlay-white-8" data-parallax-ratio="0.1"
-            data-tm-bg-img="{{ asset('home/images/courses.webp') }}">
+            data-tm-bg-img="{{ asset('home/images/courses.jpg') }}">
             <div class="container pt-150 pb-150  wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
                 <div class="section-title text-center">
                     <div class="row">

@@ -43,11 +43,11 @@ class ProfileController extends Controller
             'mobile' => 'required',
             'email' => 'required|email|unique:users,email,',
             'password' => 'required|confirmed',
-            'birth_date' => 'required',
-            'address' => 'required',
-            'type' => 'required',
-            'about' => 'required',
-            'why' => 'required',
+            // 'birth_date' => 'required',
+            // 'address' => 'required',
+            // 'type' => 'required',
+            // 'about' => 'required',
+            // 'why' => 'required',
         ]);
         $request->merge(['password' => bcrypt($request->password)]);
         $profile = Profile::create($request->except('password_confirmation'));
@@ -59,7 +59,10 @@ class ProfileController extends Controller
             'password' => $profile->password,
         ]);
 
-        $role = Role::where('name', $request->type)->firstOrFail();
+        // $role = Role::where('name', $request->type)->firstOrFail();
+        // $user->attachRoles([$role->id]);
+
+        $role=Role::where('name', 'user')->firstOrFail();
         $user->attachRoles([$role->id]);
         session()->flash('success', 'تم الحفظ بنجاح !');
         return redirect()->route('dashboard.profiles.index');
@@ -102,10 +105,10 @@ class ProfileController extends Controller
             'mobile' => 'required',
             'email' => 'required|email|unique:profiles,email,' . $id,
             'birth_date' => 'required',
-            'address' => 'required',
-            'type' => 'required',
-            'about' => 'required',
-            'why' => 'required',
+            // 'address' => 'required',
+            // 'type' => 'required',
+            // 'about' => 'required',
+            // 'why' => 'required',
         ]);
         $profile = Profile::find($id);
 
@@ -117,8 +120,8 @@ class ProfileController extends Controller
             'email' => $profile->email,
         ]);
 
-        $role = Role::where('name', $request->type)->firstOrFail();
-        $user->syncRoles([$role->id]);
+        // $role = Role::where('name', $request->type)->firstOrFail();
+        // $user->syncRoles([$role->id]);
 
         session()->flash('success', 'تم التعديل بنجاح !');
         return redirect()->route('dashboard.profiles.index');

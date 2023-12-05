@@ -19,11 +19,11 @@ class CreateProfilesTable extends Migration
             $table->string('mobile');
             $table->string('email')->unique();
             $table->string('password');
-            $table->date('birth_date');
-            $table->text('address');
+            $table->date('birth_date')->nullable();
+            $table->text('address')->nullable();
             // $table->string('type'); // student - worker - doctor
-            $table->longText('about');
-            $table->longText('why');
+            $table->longText('about')->nullable();
+            $table->longText('why')->nullable();
             $table->string('status')->default('active');
             // $table->rememberToken();
 

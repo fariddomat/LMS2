@@ -51,7 +51,7 @@
                                         type="email">
                                 </div>
                             </div>
-
+{{--
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label>تاريخ الميلاد</label>
@@ -79,7 +79,7 @@
                                     <label>لماذا ترغب بالانضمام؟</label>
                                     <textarea name="why" class="form-control">{{ old('why', $profile->why) }}</textarea>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <button class="btn btn-dark btn-theme-colored1 btn-block mt-15" type="submit">تعديل</button>
                             </div>

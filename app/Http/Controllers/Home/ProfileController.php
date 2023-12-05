@@ -55,10 +55,10 @@ class ProfileController extends Controller
             'mobile'=> 'required',
             'email'=> 'required|email|unique:users,email,',
             'password'=> 'required|confirmed',
-            'birth_date'=> 'required',
-            'address'=> 'required',
-            'about'=> 'required',
-            'why'=> 'required',
+            // 'birth_date'=> 'required',
+            // 'address'=> 'required',
+            // 'about'=> 'required',
+            // 'why'=> 'required',
         ]);
         $request->merge(['password'=>bcrypt($request->password)]);
         $profile=Profile::create($request->except('password_confirmation'));
@@ -135,10 +135,10 @@ class ProfileController extends Controller
             'full_name'=> 'required',
             'mobile'=> 'required',
             'email'=> 'required|email|unique:profiles,email,'. $id,
-            'birth_date'=> 'required',
-            'address'=> 'required',
-            'about'=> 'required',
-            'why'=> 'required',
+            // 'birth_date'=> 'required',
+            // 'address'=> 'required',
+            // 'about'=> 'required',
+            // 'why'=> 'required',
         ]);
 
         $user=User::where('email', $profile->email)->firstOrFail();

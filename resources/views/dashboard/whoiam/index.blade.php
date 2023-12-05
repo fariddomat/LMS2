@@ -46,12 +46,12 @@
                                                 <td>
                                                     <a href="{{ route('dashboard.whoiam.edit', $section) }}"
                                                         class="btn btn-primary">تعديل</a>
-                                                    {{-- <form action="{{ route('dashboard.whoiam.destroy', $section) }}"
+                                                    <form action="{{ route('dashboard.whoiam.destroy', $section) }}"
                                                         method="POST" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger delete">حذف</button>
-                                                    </form> --}}
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @empty

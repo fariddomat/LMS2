@@ -114,7 +114,7 @@
                                                     </div>
                                                 @else
                                                     <div class="row">
-                                                        @if ($index % 2 == 0)
+                                                        @if ($index % 2 != 0)
                                                             <div class="col-md-6" style="  align-self: center;">
                                                                 <h4>{{ $whoiam->title }}</h4>
                                                                 <p>{!! $whoiam->content !!}</p>
@@ -126,7 +126,7 @@
                                                                     justify-content: center;">
                                                                     <img src="{{ asset($whoiam->image) }}" alt=""
                                                                         style="border: 2px solid #eaeae2;
-                                                                    padding: 2px;">
+                                                                    padding: 2px; border-radius: 50%;">
                                                                 </div>
                                                             </div>
                                                         @else
@@ -138,8 +138,8 @@
 
                                                                         <img src="{{ asset($whoiam->image) }}"
                                                                             alt=""
-                                                                            style="height: 250px; border: 2px solid #eaeae2;
-                                                                            padding: 2px;">
+                                                                            style=" border: 2px solid #eaeae2;
+                                                                            padding: 2px; border-radius: 50%;">
 
                                                                 </div>
                                                             </div>
