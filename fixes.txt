@@ -26,12 +26,14 @@ make links clickable
 
 download users as excel or csv
 
+pulk email to users with anything
+
+
 احصائيات
 أكثر الاشخاص شراء
 أكثر الاشخاص دخول
 
 
-pulk email to users with anything
 snipfeed
 
 
