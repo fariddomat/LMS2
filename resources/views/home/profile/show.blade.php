@@ -24,20 +24,20 @@
                 <div class="section-content">
                     <div class="row justify-content-md-center">
                         <div class="col-md-3 mt-15">
-                            <a class="btn btn-dark btn-block   btn-theme-colored1  text-uppercase text-white"
+                            <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white"
                                 href="{{ route('profiles.edit', $profile->id) }}"
                                 style="width: 100%; text-align: right">تعديل الملف الشخصي</a>
-                            <a class="btn btn-dark btn-block   btn-theme-colored1  text-uppercase text-white mt-30"
+                            <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white mt-30"
                                 href="{{ route('profiles.password') }}" style="width: 100%; text-align: right">تعديل كلمة
                                 السر</a>
                             @if (Auth::user()->hasRole('user'))
-                                <a class="btn btn-dark btn-block   btn-theme-colored1  text-uppercase text-white mt-30"
+                                <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white mt-30"
                                     href="{{ route('courses.index') }}" style="width: 100%; text-align: right">الدورات </a>
                             @endif
                             {{-- <a class="btn btn-dark btn-block   btn-theme-colored3  text-uppercase text-white mt-30"
                             href=""  style="width: 100%; text-align: right">تسجيل خروج</a> --}}
 
-                            <a class="btn btn-dark btn-block   btn-theme-colored3  text-uppercase text-white mt-30"
+                            <a class="btn btn-dark btn-block   btn-theme-colored1  text-uppercase text-white mt-30"
                                 href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();"

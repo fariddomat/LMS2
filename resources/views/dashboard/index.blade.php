@@ -2,6 +2,14 @@
 @section('title')
     Dashboard
 @endsection
+
+@section('styles')
+   <style>
+    a{
+        color:#fff
+    }
+   </style>
+@endsection
 @section('content')
 <main class="main">
 
@@ -24,9 +32,9 @@
                                 <i class="icon-user"></i>
                             </div>
                             <h4 class="m-b-0">
-                                {{ $users }}
+                               <a href="{{ route('dashboard.users.index') }}"> {{ $users }}</a>
                                 </h4>
-                            <p>المستخدمين</p>
+                            <p><a href="{{ route('dashboard.users.index') }}">المستخدمين</a> </p>
                         </div>
 
                     </div>
@@ -39,8 +47,8 @@
                             <button type="button" class="btn btn-transparent active p-a-0 pull-left">
                                 <i class="icon-puzzle"></i>
                             </button>
-                            <h4 class="m-b-0">{{ $posts }}</h4>
-                            <p>المنشورات</p>
+                            <h4 class="m-b-0"><a href="{{ route('dashboard.posts.index') }}">{{ $posts }}</a> </h4>
+                            <p><a href="{{ route('dashboard.posts.index') }}">المنشورات</a> </p>
                         </div>
 
                     </div>
@@ -53,8 +61,8 @@
                             <div class="btn-group pull-left">
                                 <i class="icon-puzzle"></i>
                             </div>
-                            <h4 class="m-b-0">{{ $services }}</h4>
-                            <p>الخدمات</p>
+                            <h4 class="m-b-0"><a href="{{ route('dashboard.services.index') }}">{{ $services }}</a> </h4>
+                            <p><a href="{{ route('dashboard.services.index') }}">الاستشارات</a> </p>
                         </div>
 
                     </div>
@@ -67,8 +75,8 @@
                             <div class="btn-group pull-left">
                                 <i class="icon-credit-card "></i>
                             </div>
-                            <h4 class="m-b-0">{{ $payment_services }}</h4>
-                            <p>شراء الخدمات</p>
+                            <h4 class="m-b-0"><a href="{{ route('dashboard.orderservices.index') }}">{{ $payment_services }}</a> </h4>
+                            <p><a href="{{ route('dashboard.orderservices.index') }}">طلبات الاستشارات</a> </p>
                         </div>
 
                     </div>
@@ -82,9 +90,9 @@
                                 <i class="icon-grid "></i>
                             </div>
                             <h4 class="m-b-0">
-                                {{ $courses }}
+                                <a href="{{ route('dashboard.courses.index') }}">{{ $courses }}</a>
                                 </h4>
-                            <p>الدورات</p>
+                            <p><a href="{{ route('dashboard.courses.index') }}">الدورات</a> </p>
                         </div>
 
                     </div>
@@ -97,8 +105,8 @@
                             <button type="button" class="btn btn-transparent active p-a-0 pull-left">
                                 <i class="icon-bag "></i>
                             </button>
-                            <h4 class="m-b-0">{{ $enrollments }}</h4>
-                            <p>الاشتراكات</p>
+                            <h4 class="m-b-0"><a href="{{ route('dashboard.enrollments.index') }}">{{ $enrollments }}</a> </h4>
+                            <p><a href="{{ route('dashboard.enrollments.index') }}">الاشتراكات</a> </p>
                         </div>
 
                     </div>
@@ -111,8 +119,8 @@
                             <div class="btn-group pull-left">
                                 <i class="icon-credit-card "></i>
                             </div>
-                            <h4 class="m-b-0">{{ $course_payments }}</h4>
-                            <p>شراء الدورات</p>
+                            <h4 class="m-b-0"><a href="{{ route('dashboard.enrollments.index') }}">{{ $course_payments }}</a> </h4>
+                            <p><a href="{{ route('dashboard.enrollments.index') }}">شراء الدورات</a> </p>
                         </div>
 
                     </div>
@@ -125,8 +133,8 @@
                             <div class="btn-group pull-left">
                                 <i class="icon-book-open  "></i>
                             </div>
-                            <h4 class="m-b-0">{{ $materials }}</h4>
-                            <p>المواد التعليمية</p>
+                            <h4 class="m-b-0"><a href="{{ route('dashboard.materials.index') }}">{{ $materials }}</a> </h4>
+                            <p><a href="{{ route('dashboard.materials.index') }}">المواد التعليمية</a> </p>
                         </div>
 
                     </div>

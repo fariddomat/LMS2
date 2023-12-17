@@ -17,7 +17,7 @@
                                     <span><a href="{{ route('home') }}" rel="home">الرئيسية</a></span>
 
                                     <span><i class="fa fa-angle-left"></i></span>
-                                    <span><a href="{{ route('services.index') }}">الخدمات</a></span>
+                                    <span><a href="{{ route('services.index') }}">الاستشارات</a></span>
                                     <span><i class="fa fa-angle-left"></i></span>
                                     <span class="active">{{ $service->title }}</span>
                                 </div>
@@ -71,7 +71,7 @@
                             <p class="lead">{{ $service->main_title }}</p>
                             <form action="{{ route('orderservices.create') }}" method="get">
                             <input type="hidden" name="service_id" value="{{ $service->id }}">
-                                <button type="submit" class="btn btn-dark btn-theme-colored2 text-uppercase" style="margin-bottom: 50px"> أطلب الخدمة الآن</button>
+                                <button type="submit" class="btn btn-dark btn-theme-colored2 text-uppercase" style="margin-bottom: 50px"> أطلب الاستشارة الآن</button>
                             </form>
                             @if ($service->index_image != '')
                                 <div class="row" style="justify-content: center"> <img alt=""
@@ -193,7 +193,7 @@
                     </div>
                     @auth
                         <div class="row">
-                            <h3>تقييم الخدمة</h3>
+                            <h3>تقييم الاستشارة</h3>
                             <form action="{{ route('services.rating') }}" method="POST">
                                 @csrf
                                 @include('layouts._error')

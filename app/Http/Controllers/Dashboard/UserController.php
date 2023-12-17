@@ -14,14 +14,14 @@ class UserController extends Controller
 
     public function index()
     {
-        $roles=Role::whereRoleNot(['superadministrator'])->get();
+        $roles = Role::whereRoleNot(['superadministrator'])->get();
 
-        $users=User::whereRoleNot(['superadministrator'])
+        $users = User::whereRoleNot(['superadministrator'])
             ->whenSearch(request()->search)
             ->whenRole(request()->role_id)
             ->with('roles')
             ->paginate(40);
-        return view('dashboard.users.index',compact('users','roles'));
+        return view('dashboard.users.index', compact('users', 'roles'));
     }
 
     /**
@@ -31,9 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles=Role::whereRoleNot(['superadministrator'])->get();
-        return view('dashboard.users.create',compact('roles'));
-
+        $roles = Role::whereRoleNot(['superadministrator'])->get();
+        return view('dashboard.users.create', compact('roles'));
     }
 
     /**
@@ -45,15 +44,15 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:users,email',
-            'password'=>'required|confirmed',
-            'role_id'=>'required|numeric',
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed',
+            'role_id' => 'required|numeric',
         ]);
-        $request->merge(['password'=>bcrypt($request->password)]);
-        $user=User::create($request->all());
+        $request->merge(['password' => bcrypt($request->password)]);
+        $user = User::create($request->all());
         $user->attachRoles([$request->role_id]);
-        session()->flash('success','تم الحفظ بنجاح !');
+        session()->flash('success', 'تم الحفظ بنجاح !');
         return redirect()->route('dashboard.users.index');
     }
 
@@ -76,11 +75,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $roles=Role::whereRoleNot(['superadministrator'])->get();
+        $roles = Role::whereRoleNot(['superadministrator'])->get();
 
-        $user=User::find($id);
-        return view('dashboard.users.edit',compact('roles','user'));
-
+        $user = User::find($id);
+        return view('dashboard.users.edit', compact('roles', 'user'));
     }
 
     /**
@@ -93,26 +91,26 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=>'required',
-            'email'=>'required|email|unique:users,email,' . $id,
-            'role_id'=>'required|numeric',
-            'password' =>'sometimes|confirmed'
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'role_id' => 'required|numeric',
+            'password' => 'sometimes|confirmed'
         ]);
-        $user=User::find($id);
-        $profile=Profile::where('email', $user->email)->firstOrFail();
-        $user->update($request->except('password','password_confirmation'));
-        if($request->password != ''){
+        $user = User::find($id);
+        $profile = Profile::where('email', $user->email)->firstOrFail();
+        $user->update($request->except('password', 'password_confirmation'));
+        if ($request->password != '') {
             $user->update([
                 'password' => bcrypt($request->password)
             ]);
         }
         $profile->update([
-            'email'=> $user->email,
+            'email' => $user->email,
             'password' => $user->password
         ]);
         $user->syncRoles([$request->role_id]);
 
-        session()->flash('success','تم التعديل بنجاح !');
+        session()->flash('success', 'تم التعديل بنجاح !');
         return redirect()->route('dashboard.users.index');
     }
 
@@ -124,9 +122,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user=User::find($id);
+        $user = User::find($id);
+        try {
+            $profile = Profile::where('user_id', $user->id)->first();
+            $profile->delete();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $user->delete();
-        session()->flash('success','تم الحذف بنجاح !');
+        session()->flash('success', 'تم الحذف بنجاح !');
         return redirect()->route('dashboard.users.index');
     }
 
@@ -135,9 +139,9 @@ class UserController extends Controller
         $user = User::find($id);
         if ($user) {
             $user->update([
-                'status'=>'ban'
+                'status' => 'ban'
             ]);
-            session()->flash('success','تم الحظر بنجاح !');
+            session()->flash('success', 'تم الحظر بنجاح !');
             return redirect()->route('dashboard.users.index');
         } else
             return response()->json(['message' => 'error'], 404);
@@ -148,10 +152,10 @@ class UserController extends Controller
         $user = User::find($id);
         if ($user) {
             $user->update([
-                'status'=>'active'
+                'status' => 'active'
             ]);
 
-            session()->flash('success','تم إلغاء الحظر بنجاح !');
+            session()->flash('success', 'تم إلغاء الحظر بنجاح !');
             return redirect()->route('dashboard.users.index');
         } else
             return response()->json(['message' => 'error'], 404);

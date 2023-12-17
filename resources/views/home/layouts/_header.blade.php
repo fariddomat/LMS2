@@ -19,7 +19,7 @@ position: relative;">
                                         <a href="{{ route('whoiam') }}">من أنا</a>
                                     </li>
                                     <li class="{{ Request::is('service*') ? 'active' : '' }} menu-item hvr-grow">
-                                        <a href="{{ route('services.index') }}">الخدمات</a>
+                                        <a href="{{ route('services.index') }}">الاستشارات</a>
                                     </li>
                                     <li class="{{ Request::is('courses*') ? 'active' : '' }} menu-item hvr-grow">
                                         <a href="{{ route('courses.index') }}">الدورات</a>

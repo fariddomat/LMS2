@@ -1,0 +1,58 @@
+change buttons colors in profile
+
+change background color for price badge
+
+remove phone number, only whatsapp
+
+delete student redirect to same page
+
+remove user remove profile
+
+remve profile redirect to index page
+
+move courses to seconde section
+
+change message and vision colors, add shadow to images
+
+change services name
+
+remove css class from services
+
+change enrollments name
+
+change profiles name
+
+make links clickable
+
+download users as excel or csv
+
+احصائيات
+أكثر الاشخاص شراء
+أكثر الاشخاص دخول
+
+
+pulk email to users with anything
+snipfeed
+
+
+الشخص يختار الموعد والموعد ويدخلي بيانات اذا مو مسجل دخول
+بعدين يعمل حساب ويدفع
+ادخال مواعيد محددة
+
+
+free materials need login
+
+
+شراء المواد التعليمية
+عدد مرات الشراء ومين اشترك
+
+
+عرض قائمة المشتريات
+
+
+صفحة المواد التعليمية
+
+ التصنيف للدورات
+قفل الدورات للمستخدمين
+ونطلع لشهر معين
+

@@ -2,6 +2,74 @@
 @section('title')
     Manage Users
 @endsection
+
+@section('styles')
+    <link href="{{ asset('dashboard/css/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dashboard/css/removeSortingDataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset('dashboard/css/datatablesStyles.css') }}" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+
+
+@endsection
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js"></script>
+    <!-- JS -->
+
+
+    <script src="{{ asset('dashboard/js/datatables.min.js') }}" defer></script>
+    <!-- DataTables -->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.24/datatables.min.js" defer></script>
+
+    <!-- Buttons -->
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js" defer>
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js" defer></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js" defer></script>
+
+    <!-- JSZip -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" defer></script>
+
+    <!-- pdfmake -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/pdfmake.min.js" defer>
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js" defer></script>
+
+    <!-- html2canvas -->
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script defer>
+        $(document).ready(function() {
+            $('#Table').DataTable({
+                searching: false,
+                paging: false,
+                info: false,
+                sorting: false,
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: 'th:not(:last-child)'
+                        }
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        exportOptions: {
+                            columns: 'th:not(:last-child)'
+                        },
+                        customize: function(xlsx) {
+                            var sheet = xlsx.xl.worksheets['sheet1.xml'];
+                            $('sheet', sheet).attr('rightToLeft', 'true');
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+@endpush
 @section('content')
     <main class="main">
 
@@ -60,7 +128,7 @@
                         <div class="card-block table-responsive">
 
                             @if ($users->count() > 0)
-                                <table class="table table-striped ">
+                                <table id="Table" class="table table-striped ">
                                     <thead>
                                         <tr>
                                             <th>#</th>

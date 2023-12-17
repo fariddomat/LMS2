@@ -32,7 +32,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h4>إضافة خدمة</h4>
+                            <h4>إضافة استشارة</h4>
                         </div>
                         <div class="card-block">
                             <form action="{{ route('dashboard.services.store') }}" method="post" enctype="multipart/form-data">
@@ -49,7 +49,7 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="price" class="form-label">سعر الخدمة </label>
+                                    <label for="price" class="form-label">سعر الاستشارة </label>
                                     <input type="number" name="price" class="form-control" value="{{ old('price') }}" dir="rtl">
                                 </div>
 
@@ -71,14 +71,14 @@
                                     <label for="brief" class="form-label">مختصر</label>
                                     <textarea class="form-control" id="_editor" name="brief" rows="5" dir="rtl">{{ old('brief') }}</textarea>
                                 </div>
-                                <div class="form-group mb-3">
+                                {{-- <div class="form-group mb-3">
                                     <label for="icon_class" class="form-label">Icon Class</label>
                                     <input type="text" name="icon_class" class="form-control" value="{{ old('icon_class') }}">
-                                </div>
+                                </div> --}}
 
                                 <div class="form-check mb-3">
                                     <label class="form-check-label" for="available">
-                                      إتاحة طلب الخدمة
+                                      إتاحة طلب الاستشارة
                                     </label>
                                     <input class="form-check-input" style="margin-right: 50px" type="checkbox" value="1" id="available" name="available" {{ old('available') == '1' ? 'checked' : '' }}>
                                 </div>

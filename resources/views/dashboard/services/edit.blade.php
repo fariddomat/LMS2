@@ -53,7 +53,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h4>تعديل خدمة</h4>
+                            <h4>تعديل استشارة</h4>
                         </div>
                         <div class="card-block">
                             <form action="{{ route('dashboard.services.update', $service->id) }}" method="post" enctype="multipart/form-data">
@@ -73,7 +73,7 @@
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="price" class="form-label">سعر الخدمة </label>
+                                    <label for="price" class="form-label">سعر الاستشارة </label>
                                     <input type="number" name="price" class="form-control" value="{{ old('price', $service->price) }}" dir="rtl">
                                 </div>
 
@@ -104,13 +104,13 @@
                                 </div>
 
 
-                                <div class="form-group mb-3">
+                                {{-- <div class="form-group mb-3">
                                     <label for="icon_class" class="form-label">Icon Class</label>
                                     <input type="text" name="icon_class" class="form-control" value="{{ $service->icon_class }}">
-                                </div>
+                                </div> --}}
 
                                 <div class="form-check mb-3"><label class="form-check-label" for="available">
-                                      إتاحة طلب الخدمة
+                                      إتاحة طلب الاستشارة
                                     </label>
                                     <input class="form-check-input" style="margin-right: 50px" type="checkbox" value="1" id="available" name="available" {{ $service->available  == 1 ? 'checked' : '' }}>
 

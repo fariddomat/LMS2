@@ -11,8 +11,8 @@
                      </div>
                      <div class="tm-sc-unordered-list list-style2">
                          <ul>
-                             <li><strong>رقم الهاتف :</strong> <a
-                                     href= "tel:{{ setting('site_phone') }}">{{ setting('site_phone') }}</a></li>
+                             {{-- <li><strong>رقم الهاتف :</strong> <a
+                                     href= "tel:{{ setting('site_phone') }}">{{ setting('site_phone') }}</a></li> --}}
                              <li><strong>واتساب:</strong> <a
                                      href="https://api.whatsapp.com/send?phone={{ setting('site_phone2') }}">{{ setting('site_phone2') }}</a></li>
                              <li><strong>البريد الالكتروني:</strong> <a

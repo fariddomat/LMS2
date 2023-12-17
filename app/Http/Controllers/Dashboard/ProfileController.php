@@ -62,7 +62,7 @@ class ProfileController extends Controller
         // $role = Role::where('name', $request->type)->firstOrFail();
         // $user->attachRoles([$role->id]);
 
-        $role=Role::where('name', 'user')->firstOrFail();
+        $role = Role::where('name', 'user')->firstOrFail();
         $user->attachRoles([$role->id]);
         session()->flash('success', 'تم الحفظ بنجاح !');
         return redirect()->route('dashboard.profiles.index');
@@ -136,10 +136,13 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         $profile = Profile::find($id);
-
-        $user = User::where('email', $profile->email)->firstOrFail();
+        try {
+            $user = User::where('email', $profile->email)->first();
+            $user->delete();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         $profile->delete();
-        $user->delete();
         session()->flash('success', 'تم الحذف بنجاح !');
         return redirect()->route('dashboard.profiles.index');
     }

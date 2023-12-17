@@ -123,15 +123,15 @@
                  </li> --}}
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.services.index') }}"><i class="icon-plus "></i>
-                         الخدمات</a>
+                         الاستشارات</a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.servicereviews.index') }}"><i class="icon-plus "></i>
-                         تقييم الخدمات</a>
+                         تقييم الاستشارات</a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.orderservices.index') }}"><i class="icon-plus "></i>
-                         طلبات الخدمات والاستشارات</a>
+                         طلبات الاستشارات</a>
                  </li>
                  <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.contactForm.index') }}"><i class="icon-note "></i>
@@ -158,11 +158,11 @@
                  </li>
                  <li class="nav-item nav-dropdown">
                      <a class="nav-link" href="{{ route('dashboard.profiles.index') }}"><i class="icon-people "></i>
-                         الطلاب</a>
+                         المشتركين</a>
                  </li>
                  <li class="nav-item nav-dropdown">
                      <a class="nav-link" href="{{ route('dashboard.enrollments.index') }}"><i class="icon-people "></i>
-                         الاشتراكات</a>
+                        طلبات الدورات</a>
                  </li>
                  <li class="nav-item nav-dropdown">
                      <a class="nav-link" href="{{ route('dashboard.trainers.index') }}"><i class="icon-people "></i>

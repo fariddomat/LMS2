@@ -19,8 +19,8 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">الخدمات</h3>
-                            <a href="{{ route('dashboard.services.create') }}" class="btn btn-primary">إضافة خدمة</a>
+                            <h3 class="card-title">الاستشارات</h3>
+                            <a href="{{ route('dashboard.services.create') }}" class="btn btn-primary">إضافة استشارة</a>
                         </div>
                         <div class="card-block">
                             @if (count($services) > 0)
@@ -29,7 +29,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>العنوان</th>
-                                            <th>طلب الخدمة</th>
+                                            <th>طلب الاستشارة</th>
                                             <th>أيام العمل</th>
                                             <th>العمليات</th>
                                         </tr>

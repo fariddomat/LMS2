@@ -110,7 +110,7 @@
                 <div class="col-lg-12" style="margin-top: 15px">
                     <div class="card">
                         <div class="card-header">
-                            <i class="fa fa-align-justify"></i> الطلاب
+                            <i class="fa fa-align-justify"></i> المشتركين
                         </div>
                         <div class="card-block table-responsive">
 
