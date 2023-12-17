@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactForm;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Mail;
 
 class ContactFormController extends Controller
 {
@@ -38,5 +40,44 @@ class ContactFormController extends Controller
         $contactForm->save();
         session()->flash('success', 'Contact Us Note Updated Successfully');
         return redirect()->back();
+    }
+
+    public function notify()
+    {
+        $users = User::all();
+        return view('dashboard.contactForm.notify', compact('users'));
+    }
+
+    public function send_mail(Request $request)
+    {
+        $request->validate([
+            'details' => 'required',
+        ]);
+
+        $users = null;
+        if ($request->users[0] == null) {
+
+            $users = User::all();
+        } else {
+
+            $users = User::whereIn('id', $request->users)->get();
+        }
+        foreach ($users as $key => $user) {
+            $info = array(
+                'name' => 'إشعار حجز جلسة لدى mellowminds ',
+                'route' => route('home'),
+                'details' => $request->details
+            );
+            Mail::send('mail', $info, function ($message) use ($user) {
+                $message->to($user->email, $user->name)
+                    ->subject('إشعار بريد إلكتروني من mellowminds');
+                $message->from('notify@mellowminds.co.uk', 'Mellowminds');
+            });
+
+            // echo "Successfully sent the email";
+        }
+
+        session()->flash('success', 'Email Sent Successfully');
+        return redirect()->route('dashboard.contactForm.index');
     }
 }

@@ -137,6 +137,10 @@
                      <a class="nav-link" href="{{ route('dashboard.contactForm.index') }}"><i class="icon-note "></i>
                          تواصل معنا</a>
                  </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="{{ route('dashboard.contactForm.notify') }}"><i class="icon-note "></i>
+                         الإشعارات</a>
+                 </li>
                  <li class="nav-title">
                      الأكاديمية
                  </li>

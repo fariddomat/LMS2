@@ -116,6 +116,8 @@ Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\Lesso
     Route::post('/contactForm/{contactForm}/status', 'App\Http\Controllers\Dashboard\ContactFormController@changeStatus')->name('contactForm.status');
     Route::put('/contactForm/{contactForm}/note', 'App\Http\Controllers\Dashboard\ContactFormController@note')->name('contactForm.note');
 
+    Route::get('/contactForm/notify', 'App\Http\Controllers\Dashboard\ContactFormController@notify')->name('contactForm.notify');
+    Route::post('/contactForm/send_mail', 'App\Http\Controllers\Dashboard\ContactFormController@send_mail')->name('contactForm.send_mail');
 
 
     Route::get('/imageGallery/browser', 'App\Http\Controllers\Dashboard\ImageGalleryController@browser')->name('imageGallery.browser');
