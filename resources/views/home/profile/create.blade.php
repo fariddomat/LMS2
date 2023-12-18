@@ -9,7 +9,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-md-push-3">
-                        <form name="reg-form" class="register-form" method="post" action="{{ route('profiles.store') }}">
+                        <form name="reg-form" class="register-form" method="post" action="{{ route('register') }}">
                             @csrf
                             <div class="icon-box mb-0 p-0">
                                 <a href="#" class="icon icon-bordered icon-rounded icon-sm pull-left mb-0 mr-10">
@@ -34,7 +34,7 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="full_name">الاسم بالكامل</label>
-                                    <input name="full_name" value="{{ old('full_name') }}" class="form-control"
+                                    <input name="name" value="{{ old('name') }}" class="form-control"
                                         type="text">
                                 </div>
 

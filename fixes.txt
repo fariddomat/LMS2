@@ -28,14 +28,11 @@ download users as excel or csv
 
 pulk email to users with anything
 
+register will automatic login
 
 احصائيات
 أكثر الاشخاص شراء
 أكثر الاشخاص دخول
-
-
-snipfeed
-
 
 الشخص يختار الموعد والموعد ويدخلي بيانات اذا مو مسجل دخول
 بعدين يعمل حساب ويدفع
