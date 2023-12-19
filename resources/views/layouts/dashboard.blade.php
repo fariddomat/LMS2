@@ -126,6 +126,10 @@
                          الاستشارات</a>
                  </li>
                  <li class="nav-item">
+                     <a class="nav-link" href="{{ route('dashboard.dayOfWorks.index') }}"><i class="icon-calendar "></i>
+                         أيام العمل</a>
+                 </li>
+                 <li class="nav-item">
                      <a class="nav-link" href="{{ route('dashboard.servicereviews.index') }}"><i class="icon-plus "></i>
                          تقييم الاستشارات</a>
                  </li>

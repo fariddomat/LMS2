@@ -26,9 +26,11 @@ make links clickable
 
 download users as excel or csv
 
-pulk email to users with anything
+Bulk email to users with anything
 
 register will automatic login
+
+define service days of works and times
 
 احصائيات
 أكثر الاشخاص شراء
