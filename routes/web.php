@@ -14,34 +14,37 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => 'WebMiddleware'], function(){
-Route::get('/', 'App\Http\Controllers\Home\HomeController@index')->name('home');
+
+Route::group(['middleware' => 'WebMiddleware'], function () {
+    Route::get('/', 'App\Http\Controllers\Home\HomeController@index')->name('home');
 
 
-Route::resource('posts','App\Http\Controllers\Home\PostController');
-Route::resource('academy','App\Http\Controllers\Home\AcademyController');
-Route::resource('courses','App\Http\Controllers\Home\CourseController');
-Route::resource('services','App\Http\Controllers\Home\ServiceController');
-Route::post('/contact', 'App\Http\Controllers\Home\HomeController@contact')->name('contact');
-Route::get('/contactPage', 'App\Http\Controllers\Home\HomeController@contactPage')->name('contactPage');
-Route::get('/faqs', 'App\Http\Controllers\Home\HomeController@faqs')->name('faqs');
-Route::get('/whoiam', 'App\Http\Controllers\Home\HomeController@whoiam')->name('whoiam');
-Route::get('/integrativeMedicine', 'App\Http\Controllers\Home\HomeController@integrativeMedicines')->name('integrativeMedicine');
+    Route::resource('posts', 'App\Http\Controllers\Home\PostController');
+    Route::resource('academy', 'App\Http\Controllers\Home\AcademyController');
+    Route::resource('courses', 'App\Http\Controllers\Home\CourseController');
+    Route::resource('services', 'App\Http\Controllers\Home\ServiceController');
+    Route::post('/contact', 'App\Http\Controllers\Home\HomeController@contact')->name('contact');
+    Route::get('/contactPage', 'App\Http\Controllers\Home\HomeController@contactPage')->name('contactPage');
+    Route::get('/faqs', 'App\Http\Controllers\Home\HomeController@faqs')->name('faqs');
+    Route::get('/whoiam', 'App\Http\Controllers\Home\HomeController@whoiam')->name('whoiam');
+    Route::get('/integrativeMedicine', 'App\Http\Controllers\Home\HomeController@integrativeMedicines')->name('integrativeMedicine');
 
-// Route::get('tap-payment', 'App\Http\Controllers\TapController@form')->name('tap.form');
-Route::post('tap-payment', 'App\Http\Controllers\TapController@payment')->name('tap.payment');
-Route::any('tap-callback','App\Http\Controllers\TapController@callback')->name('tap.callback');
-Route::any('enrollments/tap-callback','App\Http\Controllers\Home\EnrollmentController@callback')->name('enrollments.callback');
-Route::any('materials/tap-callback','App\Http\Controllers\Home\MaterialController@callback')->name('materials.callback');
-Route::any('orderservices/tap-callback','App\Http\Controllers\Home\OrderServiceController@callback')->name('orderservices.callback');
+    // Route::get('tap-payment', 'App\Http\Controllers\TapController@form')->name('tap.form');
+    Route::post('tap-payment', 'App\Http\Controllers\TapController@payment')->name('tap.payment');
+    Route::any('tap-callback', 'App\Http\Controllers\TapController@callback')->name('tap.callback');
+    Route::any('enrollments/tap-callback', 'App\Http\Controllers\Home\EnrollmentController@callback')->name('enrollments.callback');
+    Route::any('materials/tap-callback', 'App\Http\Controllers\Home\MaterialController@callback')->name('materials.callback');
+    Route::any('orderservices/tap-callback', 'App\Http\Controllers\Home\OrderServiceController@callback')->name('orderservices.callback');
+
+    Route::post('/appointment/time', 'App\Http\Controllers\Home\HomeController@appointmentTime')->name('appointment.time');
 
 });
 
-  Route::resource('profiles','App\Http\Controllers\Home\ProfileController')->only('create', 'store');
+Route::resource('profiles', 'App\Http\Controllers\Home\ProfileController')->only('create', 'store');
 
 
 // Clear cashe route
-Route::get('/clear', function() {
+Route::get('/clear', function () {
 
     Artisan::call('cache:clear');
     Artisan::call('config:clear');
@@ -49,44 +52,43 @@ Route::get('/clear', function() {
     Artisan::call('view:clear');
 
     return "Cleared!";
+});
 
- });
-
- Route::middleware(['auth'])
+Route::middleware(['auth'])
     ->group(function () {
-        Route::resource('profiles','App\Http\Controllers\Home\ProfileController')->except('create', 'store');
-        Route::get('profile/passowrd','App\Http\Controllers\Home\ProfileController@password')->name('profiles.password');
-        Route::post('profile/changePassowrd','App\Http\Controllers\Home\ProfileController@changePassword')->name('profiles.changePassword');
-        Route::post('services/rating','App\Http\Controllers\Home\ServiceController@rating')->name('services.rating');
+        Route::resource('profiles', 'App\Http\Controllers\Home\ProfileController')->except('create', 'store');
+        Route::get('profile/passowrd', 'App\Http\Controllers\Home\ProfileController@password')->name('profiles.password');
+        Route::post('profile/changePassowrd', 'App\Http\Controllers\Home\ProfileController@changePassword')->name('profiles.changePassword');
+        Route::post('services/rating', 'App\Http\Controllers\Home\ServiceController@rating')->name('services.rating');
 
-        Route::resource('enrollments','App\Http\Controllers\Home\EnrollmentController');
-        Route::resource('materials','App\Http\Controllers\Home\MaterialController');
-        Route::resource('orderservices','App\Http\Controllers\Home\OrderServiceController');
+        Route::resource('enrollments', 'App\Http\Controllers\Home\EnrollmentController');
+        Route::resource('materials', 'App\Http\Controllers\Home\MaterialController');
+        Route::resource('orderservices', 'App\Http\Controllers\Home\OrderServiceController');
 
-        Route::resource('lessons','App\Http\Controllers\Home\LessonController')->only('show');
+        Route::resource('lessons', 'App\Http\Controllers\Home\LessonController')->only('show');
     });
 
 
- Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'role:superadministrator'], 'as' => 'dashboard.'], function () {
-   Route::get('home', 'App\Http\Controllers\Dashboard\HomeController@index')->name('home');
+Route::group(['prefix' => '/dashboard', 'middleware' => ['auth', 'role:superadministrator'], 'as' => 'dashboard.'], function () {
+    Route::get('home', 'App\Http\Controllers\Dashboard\HomeController@index')->name('home');
 
-    Route::resource('users','App\Http\Controllers\Dashboard\UserController');
+    Route::resource('users', 'App\Http\Controllers\Dashboard\UserController');
     Route::post('ban/{id}', 'App\Http\Controllers\Dashboard\UserController@ban')->name('users.ban');
     Route::post('unban/{id}', 'App\Http\Controllers\Dashboard\UserController@unban')->name('users.unban');
-    Route::resource('profiles','App\Http\Controllers\Dashboard\ProfileController');
+    Route::resource('profiles', 'App\Http\Controllers\Dashboard\ProfileController');
     Route::post('active/{id}', 'App\Http\Controllers\Dashboard\ProfileController@active')->name('profiles.active');
     Route::post('reject/{id}', 'App\Http\Controllers\Dashboard\ProfileController@reject')->name('profiles.reject');
     Route::post('paid/{id}', 'App\Http\Controllers\Dashboard\ProfileController@paid')->name('profiles.paid');
-    Route::resource('trainers','App\Http\Controllers\Dashboard\TrainerController');
+    Route::resource('trainers', 'App\Http\Controllers\Dashboard\TrainerController');
 
-    Route::resource('posts','App\Http\Controllers\Dashboard\PostController');
-    Route::resource('categories','App\Http\Controllers\Dashboard\CategoryController');
-    Route::resource('courses','App\Http\Controllers\Dashboard\CourseController');
-    Route::resource('enrollments','App\Http\Controllers\Dashboard\EnrollmentController');
-    Route::resource('lessons','App\Http\Controllers\Dashboard\LessonController');
+    Route::resource('posts', 'App\Http\Controllers\Dashboard\PostController');
+    Route::resource('categories', 'App\Http\Controllers\Dashboard\CategoryController');
+    Route::resource('courses', 'App\Http\Controllers\Dashboard\CourseController');
+    Route::resource('enrollments', 'App\Http\Controllers\Dashboard\EnrollmentController');
+    Route::resource('lessons', 'App\Http\Controllers\Dashboard\LessonController');
     Route::post('lessons/sortable', 'App\Http\Controllers\Dashboard\LessonController@sort');
 
-    Route::resource('course_categories','App\Http\Controllers\Dashboard\CourseCategoryController');
+    Route::resource('course_categories', 'App\Http\Controllers\Dashboard\CourseCategoryController');
     Route::post('course_categories/sortable', 'App\Http\Controllers\Dashboard\CourseCategoryController@sort');
 
     Route::get('online_classes/index', 'App\Http\Controllers\Dashboard\OnlineClasseController@index')->name('online_classes.index');
@@ -97,18 +99,18 @@ Route::get('/clear', function() {
     Route::post('online_classes/notify/id', 'App\Http\Controllers\Dashboard\OnlineClasseController@notify')->name('online_classes.notify');
 
 
-    Route::get('lessons/{lesson}/lesson_files/create','App\Http\Controllers\Dashboard\LessonFileController@create')->name('lesson.files.create');
-    Route::get('lessons/{lesson}/lesson_files/show','App\Http\Controllers\Dashboard\LessonFileController@show')->name('lesson.files.show');
-Route::post('lessons/{lesson}/lesson_files', 'App\Http\Controllers\Dashboard\LessonFileController@store')->name('lesson.files.store');
-Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\LessonFileController@destroy')->name('lesson.files.destroy');
+    Route::get('lessons/{lesson}/lesson_files/create', 'App\Http\Controllers\Dashboard\LessonFileController@create')->name('lesson.files.create');
+    Route::get('lessons/{lesson}/lesson_files/show', 'App\Http\Controllers\Dashboard\LessonFileController@show')->name('lesson.files.show');
+    Route::post('lessons/{lesson}/lesson_files', 'App\Http\Controllers\Dashboard\LessonFileController@store')->name('lesson.files.store');
+    Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\LessonFileController@destroy')->name('lesson.files.destroy');
 
     Route::get('/courses/{course}/lessons/create', [App\Http\Controllers\Dashboard\LessonController::class, 'create'])->name('lessons.create');
 
-    Route::resource('payments','App\Http\Controllers\Dashboard\PaymentController');
+    Route::resource('payments', 'App\Http\Controllers\Dashboard\PaymentController');
 
-    Route::resource('tags','App\Http\Controllers\Dashboard\TagController');
-    Route::resource('whoiam','App\Http\Controllers\Dashboard\WhoIAmController');
-    Route::resource('integrativeMedicines','App\Http\Controllers\Dashboard\IntegrativeMedicineController');
+    Route::resource('tags', 'App\Http\Controllers\Dashboard\TagController');
+    Route::resource('whoiam', 'App\Http\Controllers\Dashboard\WhoIAmController');
+    Route::resource('integrativeMedicines', 'App\Http\Controllers\Dashboard\IntegrativeMedicineController');
 
 
     Route::get('/contactForm', 'App\Http\Controllers\Dashboard\ContactFormController@index')->name('contactForm.index');
@@ -129,8 +131,8 @@ Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\Lesso
     Route::get('/academy', 'App\Http\Controllers\Dashboard\AcademyController@create')->name('academy.create');
     Route::post('/academy', 'App\Http\Controllers\Dashboard\AcademyController@store')->name('academy.store');
 
-    Route::resource('services','App\Http\Controllers\Dashboard\ServiceController');
-    Route::resource('servicereviews','App\Http\Controllers\Dashboard\ServiceReviewController');
+    Route::resource('services', 'App\Http\Controllers\Dashboard\ServiceController');
+    Route::resource('servicereviews', 'App\Http\Controllers\Dashboard\ServiceReviewController');
     Route::get('/services/{service}/sliderImages', 'App\Http\Controllers\Dashboard\ServiceSliderImageController@index')->name('sliderImages.index');
     Route::get('/services/{service}/sliderImages/create', 'App\Http\Controllers\Dashboard\ServiceSliderImageController@create')->name('sliderImages.create');
     Route::post('/services/{service}/sliderImages', 'App\Http\Controllers\Dashboard\ServiceSliderImageController@store')->name('sliderImages.store');
@@ -149,8 +151,8 @@ Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\Lesso
     Route::delete('/services/sections/{section}/deleteImage', 'App\Http\Controllers\Dashboard\ServiceSectionController@destroyImage')->name('sections.destroyImage');
 
 
-    Route::resource('orderservices','App\Http\Controllers\Dashboard\OrderServiceController');
-    Route::resource('faqs','App\Http\Controllers\Dashboard\FAQController');
+    Route::resource('orderservices', 'App\Http\Controllers\Dashboard\OrderServiceController');
+    Route::resource('faqs', 'App\Http\Controllers\Dashboard\FAQController');
 
 
     Route::get('/settings/cover', 'App\Http\Controllers\Dashboard\SettingController@cover')->name('setting.cover');
@@ -163,11 +165,10 @@ Route::delete('lesson_files/{lessonFile}', 'App\Http\Controllers\Dashboard\Lesso
     Route::post('/settings/changePass', 'App\Http\Controllers\Dashboard\SettingController@changePass')->name('setting.changePass');
 
 
-    Route::resource('materials','App\Http\Controllers\Dashboard\MaterialController');
+    Route::resource('materials', 'App\Http\Controllers\Dashboard\MaterialController');
     Route::resource('dayOfWorks', 'App\Http\Controllers\Dashboard\DayOfWorkController');
     Route::resource('dailyAppointments', 'App\Http\Controllers\Dashboard\DailyAppointmentController');
-
- });
+});
 
 
 Auth::routes();
@@ -175,4 +176,4 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::any('/lessons/video/{file}', 'App\Http\Controllers\Home\HomeController@video')->where(['file'=>'.*']);
+Route::any('/lessons/video/{file}', 'App\Http\Controllers\Home\HomeController@video')->where(['file' => '.*']);

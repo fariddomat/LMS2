@@ -1,5 +1,53 @@
 @extends('home.layouts._app')
+@section('styles')
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <!-- FullCalendar CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
+    <!-- jQuery and FullCalendar JS files -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+@endsection
+@push('scripts')
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $('#appointment_date').on('change', function(e) {
+                var appointment_date = e.target.value;
+                $.ajax({
+                    url: "{{ route('appointment.time') }}",
+                    type: "POST",
+                    data: {
+                        appointment_date: appointment_date
+                    },
+                    success: function(data) {
+                        $('#appointment_time').empty();
+                        var i = 0;
+                        $.each(data.time, function(index,
+                            t) {
+                            i++;
+                            $('#appointment_time').append('<option value="' +
+                                t
+                                .id + '">' + t.time + '</option>');
+                        })
+                        if (i == 0) {
+                            $('#appointment_time').append(
+                                '<option>لا يوجد مواعيد متاحة</option>');
+                        }
+                    }
+                })
+            });
+        });
+    </script>
+@endpush
 @section('content')
     <!-- Start main-content -->
     <div class="main-content-area">
@@ -70,8 +118,29 @@
                             <h3 class="mt-20 mb-10">{{ $service->title }}</h3>
                             <p class="lead">{{ $service->main_title }}</p>
                             <form action="{{ route('orderservices.create') }}" method="get">
-                            <input type="hidden" name="service_id" value="{{ $service->id }}">
-                                <button type="submit" class="btn btn-dark btn-theme-colored2 text-uppercase" style="margin-bottom: 50px"> أطلب الاستشارة الآن</button>
+                                <div class="row">
+                                    @include('layouts._error')
+                                    <div class="col-md-4 form-group mt-3">
+                                        <input type="date" id="appointment_date" name="appointment_date"
+                                            class="form-control datepicker" id="date" placeholder="Appointment Date"
+                                            data-rule="minlen:4" data-msg="Please enter at least 4 chars"
+                                            min="{{ now()->toDateString('Y-m-d') }}">
+                                        <div class="validate"></div>
+                                    </div>
+
+                                    <div class="col-md-4 form-group mt-3">
+                                        <select name="appointment_time" id="appointment_time" class="form-control">
+                                            <option value="">اختر تاريخ من فضلك</option>
+                                        </select>
+                                        <div class="validate"></div>
+                                    </div>
+                                <input type="hidden" name="service_id" value="{{ $service->id }}">
+
+                                <div class="col-md-4 form-group mt-3">
+                                    <button type="submit" class="btn btn-dark btn-theme-colored2 text-uppercase"
+                                        style="margin-bottom: 50px"> أطلب الاستشارة الآن</button>
+                                </div>
+                                </div>
                             </form>
                             @if ($service->index_image != '')
                                 <div class="row" style="justify-content: center"> <img alt=""

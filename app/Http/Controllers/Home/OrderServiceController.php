@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Home;
 
 use Mail;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Dashboard\OnlineClasseController;
+use App\Models\DailyAppointment;
+use App\Models\DayOfWork;
+use App\Models\OnlineClasse;
 use App\Models\OrderService;
 use App\Models\PaymentService;
 use App\Models\Profile;
 use App\Models\Service;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,34 +52,50 @@ class OrderServiceController extends Controller
         }
         session()->put('service_id', $request->service_id);
 
+        $request->validate([
+            'appointment_date' => 'required',
+            'appointment_time' => 'required',
+        ]);
+        $date = $request->appointment_date;
+        $d    = new DateTime($date);
+        $d->format('l');  //pass l for lion aphabet in format
+        // dd($d->format('l'));
+        $day = DayOfWork::where('day', $d->format('l'))->first();
+        $time = DailyAppointment::findOrFail($request->appointment_time);
+        $start_At = $request->appointment_date . ' ' . $time->time;
+        session()->put('start_at', $start_At);
+        $a = OnlineClasse::where('start_at', $start_At)->count();
+        if ($a > 0) {
+            return redirect()->back()->withErrors([
+                'msg' => 'هذا الموعد محجوز مسبقاً'
+            ]);
+        }
+
         // $profile = Profile::where('email', $user->email)->firstOrFail();
-         // return redirect()->route('enrollments.callback');
-         $stripe = new \Stripe\StripeClient('sk_test_51LnVFkAKQSG9RjIjGFkDqFvDuW9mt3axN7bnovgWzlz78PgjAXk6ccQmRSJhSayQsnlq5BkvXBxr1h7palVJB72w00MWk9DaGu');
-         $redirectUrl = 'https://mellowminds.co.uk/orderservices/tap-callback';
+        // return redirect()->route('enrollments.callback');
+        $stripe = new \Stripe\StripeClient('sk_test_51LnVFkAKQSG9RjIjGFkDqFvDuW9mt3axN7bnovgWzlz78PgjAXk6ccQmRSJhSayQsnlq5BkvXBxr1h7palVJB72w00MWk9DaGu');
+        $redirectUrl = 'https://mellowminds.co.uk/orderservices/tap-callback';
 
-             $response =  $stripe->checkout->sessions->create([
-                 'success_url' => $redirectUrl,
-                 'customer_email' => $user->email,
-                 'payment_method_types' => ['link', 'card'],
-                 'line_items' => [
-                     [
-                         'price_data'  => [
-                             'product_data' => [
-                                 'name' => $service->title,
-                             ],
-                             'unit_amount'  => 100 * $service->price,
-                             'currency'     => 'USD',
-                         ],
-                         'quantity'    => 1
-                     ],
-                 ],
-                 'mode' => 'payment',
-                 'allow_promotion_codes' => false
-             ]);
-         return redirect($response['url']);
-
-
-
+        $response =  $stripe->checkout->sessions->create([
+            'success_url' => $redirectUrl,
+            'customer_email' => $user->email,
+            'payment_method_types' => ['link', 'card'],
+            'line_items' => [
+                [
+                    'price_data'  => [
+                        'product_data' => [
+                            'name' => $service->title,
+                        ],
+                        'unit_amount'  => 100 * $service->price,
+                        'currency'     => 'USD',
+                    ],
+                    'quantity'    => 1
+                ],
+            ],
+            'mode' => 'payment',
+            'allow_promotion_codes' => false
+        ]);
+        return redirect($response['url']);
     }
 
     public function callback(Request $request)
@@ -89,6 +110,8 @@ class OrderServiceController extends Controller
             'user_id' => auth()->id(),
             'service_id' => $service->id,
         ]);
+
+
         PaymentService::create([
             'user_id' => auth()->id(),
             'service_id' => $service->id,
@@ -98,8 +121,23 @@ class OrderServiceController extends Controller
             'transaction_id' => 1,
         ]);
 
+        $user = Auth::user();
         try {
-            $user = Auth::user();
+            $data = [
+                'service_id' => $service->id,
+                'user_id' => $user->id,
+                'topic' => $service->title,
+                'duration' => '60',
+                'start_at' => session('start_at'),
+            ];
+            $online_classe = OnlineClasse::create($data);
+            app(\App\Http\Controllers\Dashboard\OnlineClasseController::class)
+                ->createMeeting($data, $online_classe->id);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+
+        try {
             $info = array(
                 'name' => 'إلى ' . $user->name,
 

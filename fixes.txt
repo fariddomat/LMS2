@@ -32,13 +32,12 @@ register will automatic login
 
 define service days of works and times
 
+User select service date and time before pay
+
 احصائيات
 أكثر الاشخاص شراء
 أكثر الاشخاص دخول
 
-الشخص يختار الموعد والموعد ويدخلي بيانات اذا مو مسجل دخول
-بعدين يعمل حساب ويدفع
-ادخال مواعيد محددة
 
 
 free materials need login

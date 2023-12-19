@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Models\ContactForm;
 use App\Models\Post;
 use App\Models\About;
+use App\Models\DailyAppointment;
+use App\Models\DayOfWork;
 use App\Models\Enrollment;
 use App\Models\Faq;
 use App\Models\IntegrativeMedicine;
@@ -16,6 +18,7 @@ use App\Models\Material;
 use App\Models\Service;
 use App\Models\Trainer;
 use App\Models\WhoIAm;
+use DateTime;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -100,5 +103,27 @@ class HomeController extends Controller
         ];
 
         return response()->file($videoPath, $headers);
+    }
+
+    public function appointmentTime(Request $request)
+    {
+
+
+        try {
+            $date = $request->appointment_date;
+            $d    = new DateTime($date);
+            $d->format('l');  //pass l for lion aphabet in format
+            // dd($d->format('l'));
+            $day = DayOfWork::where('day', $d->format('l'))->first();
+            // dd($day);
+            $time = DailyAppointment::where('day_of_work_id', $day->id)->get();
+            return response()->json([
+                'time' => $time
+            ]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'time' => null
+            ]);
+        }
     }
 }

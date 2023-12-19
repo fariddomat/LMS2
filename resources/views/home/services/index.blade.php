@@ -37,7 +37,7 @@
                                         <p>{{ $service->main_title }}</p>
                                         <p>
                                             @if ($service->price > 0)
-                                            سعر الخدمة: {{ $service->price }} ريال
+                                            سعر الخدمة: {{ $service->price }} $
                                             @else
                                             <br>
                                             @endif
