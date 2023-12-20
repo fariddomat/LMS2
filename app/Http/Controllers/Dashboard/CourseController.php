@@ -32,7 +32,7 @@ class CourseController extends Controller
     public function store(Request $request)
     {
 
-        $request_data = $request->except(['thumbnail']);
+        $request_data = $request->except(['thumbnail', 'defer']);
         $request->validate([
             'title' => 'required',
             'description' => 'required',
@@ -40,6 +40,14 @@ class CourseController extends Controller
             'price' => 'required|numeric',
             'thumbnail' => 'required|image|max:2048',
         ]);
+
+
+        $request_data['defer']  = $request->has('defer') ? 1 : 0;
+        if ( $request->has('defer')) {
+           $request->validate([
+            'defer_date'=> 'required',
+           ]);
+        }
 
         $thumbnail = Image::make($request->thumbnail)
             ->encode('jpg');
@@ -61,13 +69,22 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
 
-        $request_data = $request->except(['thumbnail']);
+        $request_data = $request->except(['thumbnail', 'defer']);
         $request->validate([
             'title' => 'required',
             'description' => 'required',
             'duration' => 'required',
             'price' => 'required|numeric'
         ]);
+
+
+
+        $request_data['defer']  = $request->has('defer') ? 1 : 0;
+        if ( $request->has('defer')) {
+           $request->validate([
+            'defer_date'=> 'required',
+           ]);
+        }
 
         if ($request->thumbnail) {
             if ($course->thumbnail != null)

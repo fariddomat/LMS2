@@ -25,6 +25,7 @@
                             <form method="POST" action="{{ route('dashboard.courses.store') }}" enctype="multipart/form-data">
                                 @csrf
 
+                                @include('layouts._error')
                                 <div class="form-group">
                                     <label for="title">العنوان</label>
                                     <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}" required autofocus>
@@ -62,6 +63,19 @@
                                     @error('thumbnail')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="form-check-label" for="defer">
+                                      تأجيل الدورة
+                                    </label>
+                                    <input class="form-check-input" style="margin-right: 50px" type="checkbox" value="0" id="defer" name="defer" {{ old('defer') == '1' ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="defer" style="margin-right: 55px">
+                                      موعد افتتاح الدورة في حال التأجيل
+                                    </label>
+                                    <input class="" style="margin-right: 50px" type="date"  id="defer_date" name="defer_date" value="{{ old('defer_date') }}">
                                 </div>
 
 

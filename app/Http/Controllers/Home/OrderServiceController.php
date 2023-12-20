@@ -45,11 +45,11 @@ class OrderServiceController extends Controller
         if (!$user)
             abort(403);
 
-        $order = OrderService::where('user_id', $user->id)->where('service_id', $service->id)->get();
-        if ($order->count() > 0) {
-            session()->flash('success', 'لقد طلبت هذه الخدمة مسبقا !');
-            return redirect()->back();
-        }
+        // $order = OrderService::where('user_id', $user->id)->where('service_id', $service->id)->get();
+        // if ($order->count() > 0) {
+        //     session()->flash('success', 'لقد طلبت هذه الخدمة مسبقا !');
+        //     return redirect()->back();
+        // }
         session()->put('service_id', $request->service_id);
 
         $request->validate([

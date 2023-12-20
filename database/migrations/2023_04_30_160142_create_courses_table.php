@@ -20,6 +20,8 @@ class CreateCoursesTable extends Migration
             $table->time('duration');
             $table->decimal('price', 8, 2);
             $table->string('thumbnail')->nullable();
+            $table->boolean('defer')->default('0');
+            $table->date('defer_date')->nullable();
             $table->timestamps();
         });
     }

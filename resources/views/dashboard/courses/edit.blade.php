@@ -25,6 +25,8 @@
                             <form action="{{ route('dashboard.courses.update', $course->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
+
+                                @include('layouts._error')
                                 <div class="form-group">
                                     <label for="title">العنوان</label>
                                     <input type="text" class="form-control" id="title" name="title" value="{{ $course->title }}">
@@ -55,6 +57,20 @@
                                         <img src="{{ $course->thumbnail_url }}" class="img-fluid mt-2" alt="Course thumbnail">
                                     @endif
                                 </div>
+
+
+                                <div class="form-group">
+                                    <label class="form-check-label" for="defer">
+                                      تأجيل الدورة
+                                    </label>
+                                    <input class="form-check-input" style="margin-right: 50px" type="checkbox" value="0" id="defer" name="defer" {{ old('defer',$course->defer) == '1' ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="defer" style="margin-right: 55px">
+                                      موعد افتتاح الدورة في حال التأجيل
+                                    </label>
+                                    <input class="" style="margin-right: 50px" type="date"  id="defer_date" name="defer_date" value="{{ old('defer_date', $course->defer_date) }}">
+                                </div>
+
                                 <button type="submit" class="btn btn-primary">تعديل</button>
                             </form>
                         </div>

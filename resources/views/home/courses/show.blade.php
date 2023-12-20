@@ -54,9 +54,12 @@
                             <h5><em>مدة الدورة: {{ $course->duration }}</em></h5>
                             <h5>عدد الدروس: {{ $course->lessons->count() }}</h5>
                             <p>{{ $course->description }}</p>
+                            @if ($course->defer==1)
+                            <h3>سيتم بدء هذه الدورة في تاريخ {{ $course->defer_date }}</h3>
+                            @endif
                             @auth
                                 <div class="row">
-                                    @if ($course->user)
+                                    @if ($course->user && $course->defer!=1)
                                         {{-- @foreach ($course->lessons as $index => $lesson)
                                             <a href="{{ route('lessons.show', $lesson->id) }}">
                                                 <div class="bg-light d-flex border-bottom p-15 mb-20">
@@ -251,7 +254,8 @@
                                             <div class="col-md-12 ">
 
                                                 <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white"
-                                                    href="{{ route('enrollments.create',['course_id'=> $course->id]) }}">اشترك الآن</a>
+                                                    href="{{ route('enrollments.create', ['course_id' => $course->id]) }}">اشترك
+                                                    الآن</a>
                                             </div>
                                         @else
                                             <h3>قم بتسجيل الدخول، أو قم بإنشاء حساب جديد</h3>
@@ -259,11 +263,11 @@
                                     @endif
                                 </div>
                             @else
-                                {{-- <div class="col-md-12 ">
+                                <div class="col-md-12 ">
 
                                     <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white"
-                                        href="{{ route('enrollments.create') }}">اشترك الآن</a>
-                                </div> --}}
+                                        href="{{ route('enrollments.create', ['course_id' => $course->id]) }}">اشترك الآن</a>
+                                </div>
                             @endauth
 
 
