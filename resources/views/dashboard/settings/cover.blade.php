@@ -59,7 +59,7 @@
                                 <label>غلاف </label>
                                 <input type="file" name="cover1" class="form-control-file">
                                 <img src="{{ asset('home/images/bg/bg1.jpg') }}?v={{ setting('cover_time') }}"
-                                    style=" margin-top: 10px; max-width: 250px;" alt="">
+                                    style=" margin-top: 10px; max-width: 250px; margin-bottom: 35px" alt="">
                             </div>
                             {{-- <div class="col-md-12">
                                 <label for="">فيديو الصفحة الرئيسية</label>
@@ -69,6 +69,20 @@
                                 <label for="">فيديو صفحة من نحن</label>
                                 <textarea name="who_video" class="form-control" >{{ setting('who_video') }}</textarea>
                             </div> --}}
+
+                            <br>
+                            <br>
+                            <div class="col-md-12">
+                                <label>زر Call to action</label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                    <input type="text" name="cta_text" value="{{ setting('cta_text') }}" class="form-control col-md-4" placeholder="text">
+                                    </div>
+                                    <div class="col-md-4">
+                                <input type="text" name="cta" value="{{ setting('cta') }}" class="form-control col-md-4" placeholder="url">
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <br>
