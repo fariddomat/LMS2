@@ -4,8 +4,8 @@
     <!-- Start main-content -->
     <div class="main-content-area">
         <!-- Section: page title -->
-        <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center"
-            data-tm-bg-img="{{ asset('header.webp') }}?v={{ setting('cover_time') }}" style="margin-top: 50px; background-size: cover;">
+        <section class="page-title  section-typo-light bg-img-center"
+           style="margin-top: 50px; background-size: cover; background-color:#A8CDD1;">
             <div class="container">
                 <div class="section-content">
                     <div class="row">
