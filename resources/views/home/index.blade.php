@@ -9,10 +9,10 @@
 
         }
 
-        .sStyleShadow{
+        .sStyleShadow {
             box-shadow: 12px 12px 6px -6px #A8CDD1;
--webkit-box-shadow: 12px 12px 6px -6px #A8CDD1;
--moz-box-shadow: 12px 12px 6px -6px #A8CDD1;
+            -webkit-box-shadow: 12px 12px 6px -6px #A8CDD1;
+            -moz-box-shadow: 12px 12px 6px -6px #A8CDD1;
         }
 
         .course-item .course-thumb .price {
@@ -88,6 +88,16 @@
 
                                 </div>
                             </div>
+                            @if (setting('cta_text') != '')
+                            <div style="justify-content: center; display: flex">
+                                <a href="{{ setting('cta') }}" target="_self"
+                                    class="btn btn-dark btn-theme-colored1 btn-sm btn-block mt-15 mb-20 hvr-grow"
+                                    style="width: auto"> {{ setting('cta_text') }}
+                                </a>
+                            </div>
+
+                            @endif
+
                         </div>
                     </div>
             </section>
@@ -122,7 +132,7 @@
         </section>
         <!-- Section: welcome -->
         <div class="curved-div" style="background: #cee1e3">
-{{--
+            {{--
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                 <path fill="#fff" fill-opacity="1"
                     d="M0,224L60,197.3C120,171,240,117,360,122.7C480,128,600,192,720,202.7C840,213,960,171,1080,149.3C1200,128,1320,128,1380,128L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
@@ -245,8 +255,8 @@
                             <div class="col-lg-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s"
                                 style="display: flex;
                             align-items: center; justify-content: center">
-                                <img src="{{ asset('home/images/message.jpg') }}" alt=""
-                                    style="max-width: 75%;" class="sStyleShadow">
+                                <img src="{{ asset('home/images/message.jpg') }}" alt="" style="max-width: 75%;"
+                                    class="sStyleShadow">
                             </div>
                         </div>
                         <div class="row">
@@ -254,7 +264,8 @@
                             <div class="col-lg-6 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s"
                                 style="display: flex;
                                  align-items: center; justify-content: center">
-                                <img src="{{ asset('home/images/vision.jpg') }}" alt="" style="max-width: 65%;" class="sStyleShadow">
+                                <img src="{{ asset('home/images/vision.jpg') }}" alt="" style="max-width: 65%;"
+                                    class="sStyleShadow">
                             </div>
                             <div class="col-lg-6  wow slideInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                                 <div class="col-md-12 academy3 m-3" style="background: #A8CDD1;padding-top: 50px;">
