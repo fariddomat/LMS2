@@ -19,6 +19,31 @@
             background: #A8CDD1;
         }
 
+
+        /*===== call action one =====*/
+        .call-action-one {
+            padding-top: 0px;
+            padding-bottom: 0px;
+        }
+
+        .call-action-one .call-action-content .call-action-text {
+            margin-top: 0px;
+        }
+
+        .call-action-one .call-action-content .call-action-text .action-title {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .call-action-one .call-action-content .call-action-text .text-lg {
+            color: var(--dark-3);
+            margin-top: 16px;
+        }
+
+        .call-action-one .call-action-content .call-action-btn {
+            margin-top: 50px;
+        }
+
         @media only screen and (max-width: 500px) {
 
             .pr-100 {
@@ -70,6 +95,39 @@
                                     </div>
                                 </div>
                             </div>
+
+                            @if (setting('cta_text') != '')
+                            <div class="col-md-12">
+                                <!--====== CALL TO ACTION ONE PART START ======-->
+                                <section class="call-action-area call-action-one">
+                                    <div class="container" style="
+                                    padding-top: 0px;">
+                                        <div class="row align-items-center call-action-content">
+                                            <div class="col-xl-8 col-lg-8">
+                                                <div class="call-action-text">
+                                                    <h2 class="action-title">
+                                                        {{ setting('cta_title') }}
+                                                    </h2>
+                                                    <p class="text-lg">
+                                                        {{setting('cta_text')}}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4">
+                                                <div class="call-action-btn rounded-buttons text-lg-end">
+                                                    <a href="{{ setting('cta') }}" class="btn btn-dark btn-theme-colored1 rounded-full">
+                                                       {{ setting('cta_name') }}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- row -->
+                                    </div>
+                                    <!-- container -->
+                                </section>
+                                <!--====== CALL TO ACTION ONE PART ENDS ======-->
+                            </div>
+                            @endif
                             <div class="col-md-6">
                                 <div class="pb-50 wow slideInRight" data-wow-duration="1s" data-wow-delay="0.3s">
                                     <h3 class="">{!! setting('cover1_text') !!}</h3>
@@ -88,15 +146,6 @@
 
                                 </div>
                             </div>
-                            @if (setting('cta_text') != '')
-                            <div style="justify-content: center; display: flex">
-                                <a href="{{ setting('cta') }}" target="_self"
-                                    class="btn btn-dark btn-theme-colored1 btn-sm btn-block mt-15 mb-20 hvr-grow"
-                                    style="width: auto"> {{ setting('cta_text') }}
-                                </a>
-                            </div>
-
-                            @endif
 
                         </div>
                     </div>
