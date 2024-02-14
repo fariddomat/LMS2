@@ -43,7 +43,7 @@
                                             @endif
                                         </p>
                                         <a href="{{ route('services.show', $service->title) }}" target="_self"
-                                            class="btn btn-dark btn-theme-colored1 btn-sm btn-block mt-15 mb-20"> قراءة المزيد </a>
+                                            class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15 mb-20"> قراءة المزيد </a>
                                     </div>
                                 </div>
                             </div>

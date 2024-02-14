@@ -81,7 +81,7 @@
                                 </div>
                             </div> --}}
                             <div class="form-group">
-                                <button class="btn btn-dark btn-theme-colored1 btn-block mt-15" type="submit">تعديل</button>
+                                <button class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15" type="submit">تعديل</button>
                             </div>
 
 

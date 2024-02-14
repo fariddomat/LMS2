@@ -92,14 +92,14 @@
                                 </div>
                             </div> --}}
                             <div class="form-group">
-                                <button class="btn btn-dark btn-theme-colored1 btn-block mt-15" type="submit">سجل الآن</button>
+                                <button class="btn btn-dark btn-theme-colored2 btn-sm btn-block mt-15" type="submit">سجل الآن</button>
                             </div>
 
 
                     <div class="col-md-12">
                         <p style="margin-top: 25px">لديك حساب بالفعل؟</p>
 
-                                <a class="btn btn-dark btn-block   btn-theme-colored3  text-uppercase text-white"
+                                <a class="btn btn-dark btn-block   btn-theme-colored1 btn-sm  text-uppercase text-white"
                                 href="{{ route('login') }}">دخول</a>
                     </div>
                         </form>

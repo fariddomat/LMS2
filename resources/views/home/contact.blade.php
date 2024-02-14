@@ -30,8 +30,7 @@
                           {{-- <p>{{setting('site_about')}}</p> --}}
                           <div class="tm-sc-unordered-list list-style2">
                               <ul>
-                                  <li><strong>رقم الواتس اب لحجز الجلسات:</strong> <a href= "https://wa.me/009665594361874">009665594361874</a></li>
-                                  <li><strong>رقم الهاتف للاستفسار عن الاكاديمية:</strong> <a href="tel:00966563872550">00966563872550</a></li>
+                                  <li><strong>رقم الواتس اب لحجز الجلسات:</strong> <a href= "https://api.whatsapp.com/send?phone={{ setting('site_phone2') }}">{{ setting('site_phone2') }}</a></li>
                                   <li><strong>البريد الالكتروني:</strong> <a
                                           href="mailto:{{setting('site_email')}}">{{setting('site_email')}}</a></li>
                                   <li><strong>العنوان:</strong> {{setting('site_location')}}</li>
@@ -102,7 +101,7 @@
                               <div class="mb-3">
                                   {{-- <input name="form_botcheck" class="form-control" type="hidden" value="" /> --}}
                                   <button type="submit"
-                                      class="btn btn-dark btn-theme-colored1 btn-lg btn-block mt-15"
+                                      class="btn btn-dark btn-theme-colored2 btn-sm  btn-block mt-15"
                                       data-loading-text="Please wait...">إرسال</button>
 
                               </div>

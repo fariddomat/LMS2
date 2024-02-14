@@ -64,7 +64,7 @@
                             <div class="col-md-12">
                                 <p class="Candal" style="margin-top: 25px">ليس لديك حساب بعد؟</p>
 
-                                <a class="btn btn-dark btn-block   btn-theme-colored1  text-uppercase text-white Candal"
+                                <a class="btn btn-dark btn-block   btn-theme-colored2  text-uppercase text-white Candal"
                                     href="{{ route('profiles.create') }}">إنشاء حساب جديد</a>
                             </div>
                         </form>
