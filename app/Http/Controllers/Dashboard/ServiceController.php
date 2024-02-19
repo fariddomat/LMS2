@@ -32,7 +32,7 @@ class ServiceController extends Controller
             'index_name' => ['required'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'index_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
-            'icon_class' => ['required'],
+            // 'icon_class' => ['required'],
             'price' => ['required'],
             'available' => ['nullable'],
         ];
@@ -43,7 +43,7 @@ class ServiceController extends Controller
         $service->brief = $validatedData['brief'];
         $service->main_title = $validatedData['main_title'];
         $service->index_name = $validatedData['index_name'];
-        $service->icon_class = $validatedData['icon_class'];
+        // $service->icon_class = $validatedData['icon_class'];
         $service->price = $validatedData['price'];
         if ($request->has('image')) {
 
@@ -86,7 +86,7 @@ class ServiceController extends Controller
             'index_name' => ['required'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
             'index_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp'],
-            'icon_class' => ['required'],
+            // 'icon_class' => ['required'],
             'price' => ['required'],
             'available' => ['nullable'],
         ];
@@ -96,7 +96,7 @@ class ServiceController extends Controller
         $service->brief = $validatedData['brief'];
         $service->main_title = $validatedData['main_title'];
         $service->index_name = $validatedData['index_name'];
-        $service->icon_class = $validatedData['icon_class'];
+        // $service->icon_class = $validatedData['icon_class'];
         $service->price = $validatedData['price'];
         if ($request->has('image')) {
 
